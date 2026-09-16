@@ -30,7 +30,7 @@ for init_file in "$INIT_DIR"/init_f4e*.py; do
     continue
   fi
   echo "=== TA: $uuid (hooks: $init_file) ==="
-  "$RUN_INIT_FUNCS" "optee_examples/$ta_path" "${COMMON_OPTS[@]}" --hooks "optee_examples/$init_file" --cfg-path "$cfg_path"
+  "$RUN_INIT_FUNCS" "optee_examples/$ta_path" "${COMMON_OPTS[@]}" --hooks "optee_example_apps/$init_file" 
 done
 
 sleep 24h
