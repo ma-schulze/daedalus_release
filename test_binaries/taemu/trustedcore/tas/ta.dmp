@@ -1,0 +1,2180 @@
+
+7461736b5f73746f7261676500000000.ta:     file format elf32-littlearm
+
+
+Disassembly of section .text:
+
+00000000 <delete_object>:
+       0:	e59f30fc 	ldr	r3, [pc, #252]	@ 104 <delete_object+0x104>
+       4:	e59f20fc 	ldr	r2, [pc, #252]	@ 108 <delete_object+0x108>
+       8:	e92d4bf0 	push	{r4, r5, r6, r7, r8, r9, fp, lr}
+       c:	e59fc0f8 	ldr	ip, [pc, #248]	@ 10c <delete_object+0x10c>
+      10:	e28db01c 	add	fp, sp, #28
+      14:	e24dd008 	sub	sp, sp, #8
+      18:	e08f3003 	add	r3, pc, r3
+      1c:	e08f2002 	add	r2, pc, r2
+      20:	e793600c 	ldr	r6, [r3, ip]
+      24:	e5924000 	ldr	r4, [r2]
+      28:	e596c000 	ldr	ip, [r6]
+      2c:	e3540000 	cmp	r4, #0
+      30:	e1a07000 	mov	r7, r0
+      34:	e1a05001 	mov	r5, r1
+      38:	e50bc020 	str	ip, [fp, #-32]	@ 0xffffffe0
+      3c:	e5923004 	ldr	r3, [r2, #4]
+      40:	0a00002b 	beq	f4 <delete_object+0xf4>
+      44:	e59f80c4 	ldr	r8, [pc, #196]	@ 110 <delete_object+0x110>
+      48:	e243400c 	sub	r4, r3, #12
+      4c:	e08f8008 	add	r8, pc, r8
+      50:	e1580003 	cmp	r8, r3
+      54:	0a000020 	beq	dc <delete_object+0xdc>
+      58:	e3a09000 	mov	r9, #0
+      5c:	ea000003 	b	70 <delete_object+0x70>
+      60:	e5944010 	ldr	r4, [r4, #16]
+      64:	e1580004 	cmp	r8, r4
+      68:	e244400c 	sub	r4, r4, #12
+      6c:	0a00001a 	beq	dc <delete_object+0xdc>
+      70:	e5943000 	ldr	r3, [r4]
+      74:	e1530007 	cmp	r3, r7
+      78:	1afffff8 	bne	60 <delete_object+0x60>
+      7c:	e5942008 	ldr	r2, [r4, #8]
+      80:	e2423004 	sub	r3, r2, #4
+      84:	e1530004 	cmp	r3, r4
+      88:	1a000004 	bne	a0 <delete_object+0xa0>
+      8c:	eafffff3 	b	60 <delete_object+0x60>
+      90:	e5932008 	ldr	r2, [r3, #8]
+      94:	e2423004 	sub	r3, r2, #4
+      98:	e1530004 	cmp	r3, r4
+      9c:	0affffef 	beq	60 <delete_object+0x60>
+      a0:	e5122004 	ldr	r2, [r2, #-4]
+      a4:	e1520005 	cmp	r2, r5
+      a8:	1afffff8 	bne	90 <delete_object+0x90>
+      ac:	e5932004 	ldr	r2, [r3, #4]
+      b0:	e5931008 	ldr	r1, [r3, #8]
+      b4:	e1a00003 	mov	r0, r3
+      b8:	e5812000 	str	r2, [r1]
+      bc:	e5821004 	str	r1, [r2, #4]
+      c0:	e5839008 	str	r9, [r3, #8]
+      c4:	e5839004 	str	r9, [r3, #4]
+      c8:	ebfffffe 	bl	0 <TEE_Free>
+      cc:	e5944010 	ldr	r4, [r4, #16]
+      d0:	e1580004 	cmp	r8, r4
+      d4:	e244400c 	sub	r4, r4, #12
+      d8:	1affffe4 	bne	70 <delete_object+0x70>
+      dc:	e51b2020 	ldr	r2, [fp, #-32]	@ 0xffffffe0
+      e0:	e5963000 	ldr	r3, [r6]
+      e4:	e1520003 	cmp	r2, r3
+      e8:	1a000004 	bne	100 <delete_object+0x100>
+      ec:	e24bd01c 	sub	sp, fp, #28
+      f0:	e8bd8bf0 	pop	{r4, r5, r6, r7, r8, r9, fp, pc}
+      f4:	e3530000 	cmp	r3, #0
+      f8:	1affffd1 	bne	44 <delete_object+0x44>
+      fc:	eafffff6 	b	dc <delete_object+0xdc>
+     100:	ebfffffe 	bl	0 <__stack_chk_fail>
+     104:	000000e4 	andeq	r0, r0, r4, ror #1
+     108:	000000e4 	andeq	r0, r0, r4, ror #1
+     10c:	00000000 	andeq	r0, r0, r0
+     110:	000000bc 	strheq	r0, [r0], -ip
+
+00000114 <hexToByte>:
+     114:	e59f107c 	ldr	r1, [pc, #124]	@ 198 <hexToByte+0x84>
+     118:	e92d4800 	push	{fp, lr}
+     11c:	e59f2078 	ldr	r2, [pc, #120]	@ 19c <hexToByte+0x88>
+     120:	e28db004 	add	fp, sp, #4
+     124:	e24dd008 	sub	sp, sp, #8
+     128:	e08f1001 	add	r1, pc, r1
+     12c:	e7912002 	ldr	r2, [r1, r2]
+     130:	e1a03000 	mov	r3, r0
+     134:	e2400030 	sub	r0, r0, #48	@ 0x30
+     138:	e20000ff 	and	r0, r0, #255	@ 0xff
+     13c:	e592c000 	ldr	ip, [r2]
+     140:	e3500009 	cmp	r0, #9
+     144:	e50bc008 	str	ip, [fp, #-8]
+     148:	9a00000b 	bls	17c <hexToByte+0x68>
+     14c:	e2431041 	sub	r1, r3, #65	@ 0x41
+     150:	e20110ff 	and	r1, r1, #255	@ 0xff
+     154:	e3510005 	cmp	r1, #5
+     158:	92430037 	subls	r0, r3, #55	@ 0x37
+     15c:	920000ff 	andls	r0, r0, #255	@ 0xff
+     160:	9a000005 	bls	17c <hexToByte+0x68>
+     164:	e2431061 	sub	r1, r3, #97	@ 0x61
+     168:	e20110ff 	and	r1, r1, #255	@ 0xff
+     16c:	e3510005 	cmp	r1, #5
+     170:	92430057 	subls	r0, r3, #87	@ 0x57
+     174:	920000ff 	andls	r0, r0, #255	@ 0xff
+     178:	83a00000 	movhi	r0, #0
+     17c:	e51b1008 	ldr	r1, [fp, #-8]
+     180:	e5923000 	ldr	r3, [r2]
+     184:	e1510003 	cmp	r1, r3
+     188:	1a000001 	bne	194 <hexToByte+0x80>
+     18c:	e24bd004 	sub	sp, fp, #4
+     190:	e8bd8800 	pop	{fp, pc}
+     194:	ebfffffe 	bl	0 <__stack_chk_fail>
+     198:	00000068 	andeq	r0, r0, r8, rrx
+     19c:	00000000 	andeq	r0, r0, r0
+
+000001a0 <strToByte>:
+     1a0:	e59f3088 	ldr	r3, [pc, #136]	@ 230 <strToByte+0x90>
+     1a4:	e92d49f0 	push	{r4, r5, r6, r7, r8, fp, lr}
+     1a8:	e59f2084 	ldr	r2, [pc, #132]	@ 234 <strToByte+0x94>
+     1ac:	e28db018 	add	fp, sp, #24
+     1b0:	e24dd00c 	sub	sp, sp, #12
+     1b4:	e08f3003 	add	r3, pc, r3
+     1b8:	e7938002 	ldr	r8, [r3, r2]
+     1bc:	e1a05000 	mov	r5, r0
+     1c0:	e5982000 	ldr	r2, [r8]
+     1c4:	e1a00001 	mov	r0, r1
+     1c8:	e1a04001 	mov	r4, r1
+     1cc:	e50b2020 	str	r2, [fp, #-32]	@ 0xffffffe0
+     1d0:	ebfffffe 	bl	0 <strlen>
+     1d4:	e0800fa0 	add	r0, r0, r0, lsr #31
+     1d8:	e1a070c0 	asr	r7, r0, #1
+     1dc:	e3570000 	cmp	r7, #0
+     1e0:	da00000b 	ble	214 <strToByte+0x74>
+     1e4:	e0847087 	add	r7, r4, r7, lsl #1
+     1e8:	e2455001 	sub	r5, r5, #1
+     1ec:	e5d40000 	ldrb	r0, [r4]
+     1f0:	ebffffc7 	bl	114 <hexToByte>
+     1f4:	e2844002 	add	r4, r4, #2
+     1f8:	e1a06000 	mov	r6, r0
+     1fc:	e5540001 	ldrb	r0, [r4, #-1]
+     200:	ebffffc3 	bl	114 <hexToByte>
+     204:	e1540007 	cmp	r4, r7
+     208:	e1800206 	orr	r0, r0, r6, lsl #4
+     20c:	e5e50001 	strb	r0, [r5, #1]!
+     210:	1afffff5 	bne	1ec <strToByte+0x4c>
+     214:	e51b2020 	ldr	r2, [fp, #-32]	@ 0xffffffe0
+     218:	e5983000 	ldr	r3, [r8]
+     21c:	e1520003 	cmp	r2, r3
+     220:	1a000001 	bne	22c <strToByte+0x8c>
+     224:	e24bd018 	sub	sp, fp, #24
+     228:	e8bd89f0 	pop	{r4, r5, r6, r7, r8, fp, pc}
+     22c:	ebfffffe 	bl	0 <__stack_chk_fail>
+     230:	00000074 	andeq	r0, r0, r4, ror r0
+     234:	00000000 	andeq	r0, r0, r0
+
+00000238 <search_object>:
+     238:	e59f3120 	ldr	r3, [pc, #288]	@ 360 <search_object+0x128>
+     23c:	e59f2120 	ldr	r2, [pc, #288]	@ 364 <search_object+0x12c>
+     240:	e92d4870 	push	{r4, r5, r6, fp, lr}
+     244:	e59fc11c 	ldr	ip, [pc, #284]	@ 368 <search_object+0x130>
+     248:	e28db010 	add	fp, sp, #16
+     24c:	e24dd00c 	sub	sp, sp, #12
+     250:	e08f3003 	add	r3, pc, r3
+     254:	e08f2002 	add	r2, pc, r2
+     258:	e793400c 	ldr	r4, [r3, ip]
+     25c:	e5925000 	ldr	r5, [r2]
+     260:	e594c000 	ldr	ip, [r4]
+     264:	e3550000 	cmp	r5, #0
+     268:	e50bc018 	str	ip, [fp, #-24]	@ 0xffffffe8
+     26c:	e5923004 	ldr	r3, [r2, #4]
+     270:	0a00002c 	beq	328 <search_object+0xf0>
+     274:	e59f50f0 	ldr	r5, [pc, #240]	@ 36c <search_object+0x134>
+     278:	e243c00c 	sub	ip, r3, #12
+     27c:	e08f5005 	add	r5, pc, r5
+     280:	e1550003 	cmp	r5, r3
+     284:	0a00002b 	beq	338 <search_object+0x100>
+     288:	e3a06000 	mov	r6, #0
+     28c:	e1a03006 	mov	r3, r6
+     290:	ea000003 	b	2a4 <search_object+0x6c>
+     294:	e59cc010 	ldr	ip, [ip, #16]
+     298:	e155000c 	cmp	r5, ip
+     29c:	e24cc00c 	sub	ip, ip, #12
+     2a0:	0a000014 	beq	2f8 <search_object+0xc0>
+     2a4:	e59c2000 	ldr	r2, [ip]
+     2a8:	e1520000 	cmp	r2, r0
+     2ac:	1afffff8 	bne	294 <search_object+0x5c>
+     2b0:	e59c2008 	ldr	r2, [ip, #8]
+     2b4:	e2423004 	sub	r3, r2, #4
+     2b8:	e153000c 	cmp	r3, ip
+     2bc:	1a000004 	bne	2d4 <search_object+0x9c>
+     2c0:	eafffff3 	b	294 <search_object+0x5c>
+     2c4:	e5932008 	ldr	r2, [r3, #8]
+     2c8:	e2423004 	sub	r3, r2, #4
+     2cc:	e153000c 	cmp	r3, ip
+     2d0:	0affffef 	beq	294 <search_object+0x5c>
+     2d4:	e5122004 	ldr	r2, [r2, #-4]
+     2d8:	e5922000 	ldr	r2, [r2]
+     2dc:	e1520001 	cmp	r2, r1
+     2e0:	1afffff7 	bne	2c4 <search_object+0x8c>
+     2e4:	e59cc010 	ldr	ip, [ip, #16]
+     2e8:	e3a06001 	mov	r6, #1
+     2ec:	e155000c 	cmp	r5, ip
+     2f0:	e24cc00c 	sub	ip, ip, #12
+     2f4:	1affffea 	bne	2a4 <search_object+0x6c>
+     2f8:	e2266001 	eor	r6, r6, #1
+     2fc:	e3530000 	cmp	r3, #0
+     300:	03866001 	orreq	r6, r6, #1
+     304:	e3560000 	cmp	r6, #0
+     308:	05930000 	ldreq	r0, [r3]
+     30c:	1a000009 	bne	338 <search_object+0x100>
+     310:	e51b1018 	ldr	r1, [fp, #-24]	@ 0xffffffe8
+     314:	e5942000 	ldr	r2, [r4]
+     318:	e1510002 	cmp	r1, r2
+     31c:	1a00000e 	bne	35c <search_object+0x124>
+     320:	e24bd010 	sub	sp, fp, #16
+     324:	e8bd8870 	pop	{r4, r5, r6, fp, pc}
+     328:	e3530000 	cmp	r3, #0
+     32c:	1affffd0 	bne	274 <search_object+0x3c>
+     330:	e1a00003 	mov	r0, r3
+     334:	eafffff5 	b	310 <search_object+0xd8>
+     338:	e59f0030 	ldr	r0, [pc, #48]	@ 370 <search_object+0x138>
+     33c:	e59f1030 	ldr	r1, [pc, #48]	@ 374 <search_object+0x13c>
+     340:	e59f2030 	ldr	r2, [pc, #48]	@ 378 <search_object+0x140>
+     344:	e08f0000 	add	r0, pc, r0
+     348:	e08f1001 	add	r1, pc, r1
+     34c:	e08f2002 	add	r2, pc, r2
+     350:	ebfffffe 	bl	0 <uart_printf_func>
+     354:	e3a00000 	mov	r0, #0
+     358:	eaffffec 	b	310 <search_object+0xd8>
+     35c:	ebfffffe 	bl	0 <__stack_chk_fail>
+     360:	00000108 	andeq	r0, r0, r8, lsl #2
+     364:	00000108 	andeq	r0, r0, r8, lsl #2
+     368:	00000000 	andeq	r0, r0, r0
+     36c:	000000e8 	andeq	r0, r0, r8, ror #1
+     370:	00000024 	andeq	r0, r0, r4, lsr #32
+     374:	00000024 	andeq	r0, r0, r4, lsr #32
+     378:	00000024 	andeq	r0, r0, r4, lsr #32
+
+0000037c <TA_OpenSessionEntryPoint>:
+     37c:	e59f32ec 	ldr	r3, [pc, #748]	@ 670 <TA_OpenSessionEntryPoint+0x2f4>
+     380:	e92d4ff0 	push	{r4, r5, r6, r7, r8, r9, sl, fp, lr}
+     384:	e1a05000 	mov	r5, r0
+     388:	e28db020 	add	fp, sp, #32
+     38c:	e59f02e0 	ldr	r0, [pc, #736]	@ 674 <TA_OpenSessionEntryPoint+0x2f8>
+     390:	e24ddf45 	sub	sp, sp, #276	@ 0x114
+     394:	e08f3003 	add	r3, pc, r3
+     398:	e1a06625 	lsr	r6, r5, #12
+     39c:	e7934000 	ldr	r4, [r3, r0]
+     3a0:	e206600f 	and	r6, r6, #15
+     3a4:	e2460005 	sub	r0, r6, #5
+     3a8:	e3500002 	cmp	r0, #2
+     3ac:	e5940000 	ldr	r0, [r4]
+     3b0:	e50b0028 	str	r0, [fp, #-40]	@ 0xffffffd8
+     3b4:	e1a07001 	mov	r7, r1
+     3b8:	e1a08002 	mov	r8, r2
+     3bc:	859f02b4 	ldrhi	r0, [pc, #692]	@ 678 <TA_OpenSessionEntryPoint+0x2fc>
+     3c0:	9a000005 	bls	3dc <TA_OpenSessionEntryPoint+0x60>
+     3c4:	e51b2028 	ldr	r2, [fp, #-40]	@ 0xffffffd8
+     3c8:	e5943000 	ldr	r3, [r4]
+     3cc:	e1520003 	cmp	r2, r3
+     3d0:	1a00007e 	bne	5d0 <TA_OpenSessionEntryPoint+0x254>
+     3d4:	e24bd020 	sub	sp, fp, #32
+     3d8:	e8bd8ff0 	pop	{r4, r5, r6, r7, r8, r9, sl, fp, pc}
+     3dc:	e24b9f4a 	sub	r9, fp, #296	@ 0x128
+     3e0:	e1a05425 	lsr	r5, r5, #8
+     3e4:	e1a00009 	mov	r0, r9
+     3e8:	e3a01000 	mov	r1, #0
+     3ec:	e3a02c01 	mov	r2, #256	@ 0x100
+     3f0:	e205500f 	and	r5, r5, #15
+     3f4:	ebfffffe 	bl	0 <memset>
+     3f8:	e3550005 	cmp	r5, #5
+     3fc:	0a000013 	beq	450 <TA_OpenSessionEntryPoint+0xd4>
+     400:	e3560005 	cmp	r6, #5
+     404:	0a000011 	beq	450 <TA_OpenSessionEntryPoint+0xd4>
+     408:	e59f226c 	ldr	r2, [pc, #620]	@ 67c <TA_OpenSessionEntryPoint+0x300>
+     40c:	e59f026c 	ldr	r0, [pc, #620]	@ 680 <TA_OpenSessionEntryPoint+0x304>
+     410:	e59f126c 	ldr	r1, [pc, #620]	@ 684 <TA_OpenSessionEntryPoint+0x308>
+     414:	e08f2002 	add	r2, pc, r2
+     418:	e08f0000 	add	r0, pc, r0
+     41c:	e2822010 	add	r2, r2, #16
+     420:	e08f1001 	add	r1, pc, r1
+     424:	ebfffffe 	bl	0 <uart_printf_func>
+     428:	e59f2258 	ldr	r2, [pc, #600]	@ 688 <TA_OpenSessionEntryPoint+0x30c>
+     42c:	e59f0258 	ldr	r0, [pc, #600]	@ 68c <TA_OpenSessionEntryPoint+0x310>
+     430:	e59f1258 	ldr	r1, [pc, #600]	@ 690 <TA_OpenSessionEntryPoint+0x314>
+     434:	e08f2002 	add	r2, pc, r2
+     438:	e08f0000 	add	r0, pc, r0
+     43c:	e2822028 	add	r2, r2, #40	@ 0x28
+     440:	e08f1001 	add	r1, pc, r1
+     444:	ebfffffe 	bl	0 <uart_printf_func>
+     448:	e59f0244 	ldr	r0, [pc, #580]	@ 694 <TA_OpenSessionEntryPoint+0x318>
+     44c:	eaffffdc 	b	3c4 <TA_OpenSessionEntryPoint+0x48>
+     450:	e5975018 	ldr	r5, [r7, #24]
+     454:	e3550000 	cmp	r5, #0
+     458:	0a000034 	beq	530 <TA_OpenSessionEntryPoint+0x1b4>
+     45c:	e1a00005 	mov	r0, r5
+     460:	ebfffffe 	bl	0 <strlen>
+     464:	e350001a 	cmp	r0, #26
+     468:	0a000039 	beq	554 <TA_OpenSessionEntryPoint+0x1d8>
+     46c:	e5973014 	ldr	r3, [r7, #20]
+     470:	e5976010 	ldr	r6, [r7, #16]
+     474:	e2432004 	sub	r2, r3, #4
+     478:	e3520000 	cmp	r2, #0
+     47c:	da000022 	ble	50c <TA_OpenSessionEntryPoint+0x190>
+     480:	e596a000 	ldr	sl, [r6]
+     484:	e2433008 	sub	r3, r3, #8
+     488:	e06a3003 	rsb	r3, sl, r3
+     48c:	e3530000 	cmp	r3, #0
+     490:	ca000008 	bgt	4b8 <TA_OpenSessionEntryPoint+0x13c>
+     494:	e59f21fc 	ldr	r2, [pc, #508]	@ 698 <TA_OpenSessionEntryPoint+0x31c>
+     498:	e59f01fc 	ldr	r0, [pc, #508]	@ 69c <TA_OpenSessionEntryPoint+0x320>
+     49c:	e59f11fc 	ldr	r1, [pc, #508]	@ 6a0 <TA_OpenSessionEntryPoint+0x324>
+     4a0:	e08f2002 	add	r2, pc, r2
+     4a4:	e08f0000 	add	r0, pc, r0
+     4a8:	e2822010 	add	r2, r2, #16
+     4ac:	e08f1001 	add	r1, pc, r1
+     4b0:	ebfffffe 	bl	0 <SLog>
+     4b4:	eaffffdb 	b	428 <TA_OpenSessionEntryPoint+0xac>
+     4b8:	e086300a 	add	r3, r6, sl
+     4bc:	e5933004 	ldr	r3, [r3, #4]
+     4c0:	e1a00005 	mov	r0, r5
+     4c4:	e50b3130 	str	r3, [fp, #-304]	@ 0xfffffed0
+     4c8:	ebfffffe 	bl	0 <strlen>
+     4cc:	e59f11d0 	ldr	r1, [pc, #464]	@ 6a4 <TA_OpenSessionEntryPoint+0x328>
+     4d0:	e08f1001 	add	r1, pc, r1
+     4d4:	e2802001 	add	r2, r0, #1
+     4d8:	e1a00005 	mov	r0, r5
+     4dc:	ebfffffe 	bl	0 <TEE_MemCompare>
+     4e0:	e3500000 	cmp	r0, #0
+     4e4:	0a00003a 	beq	5d4 <TA_OpenSessionEntryPoint+0x258>
+     4e8:	e59f21b8 	ldr	r2, [pc, #440]	@ 6a8 <TA_OpenSessionEntryPoint+0x32c>
+     4ec:	e59f01b8 	ldr	r0, [pc, #440]	@ 6ac <TA_OpenSessionEntryPoint+0x330>
+     4f0:	e59f11b8 	ldr	r1, [pc, #440]	@ 6b0 <TA_OpenSessionEntryPoint+0x334>
+     4f4:	e08f2002 	add	r2, pc, r2
+     4f8:	e08f0000 	add	r0, pc, r0
+     4fc:	e2822010 	add	r2, r2, #16
+     500:	e08f1001 	add	r1, pc, r1
+     504:	ebfffffe 	bl	0 <uart_printf_func>
+     508:	eaffffc6 	b	428 <TA_OpenSessionEntryPoint+0xac>
+     50c:	e59f21a0 	ldr	r2, [pc, #416]	@ 6b4 <TA_OpenSessionEntryPoint+0x338>
+     510:	e59f01a0 	ldr	r0, [pc, #416]	@ 6b8 <TA_OpenSessionEntryPoint+0x33c>
+     514:	e59f11a0 	ldr	r1, [pc, #416]	@ 6bc <TA_OpenSessionEntryPoint+0x340>
+     518:	e08f2002 	add	r2, pc, r2
+     51c:	e08f0000 	add	r0, pc, r0
+     520:	e2822010 	add	r2, r2, #16
+     524:	e08f1001 	add	r1, pc, r1
+     528:	ebfffffe 	bl	0 <uart_printf_func>
+     52c:	eaffffbd 	b	428 <TA_OpenSessionEntryPoint+0xac>
+     530:	e59f2188 	ldr	r2, [pc, #392]	@ 6c0 <TA_OpenSessionEntryPoint+0x344>
+     534:	e59f0188 	ldr	r0, [pc, #392]	@ 6c4 <TA_OpenSessionEntryPoint+0x348>
+     538:	e59f1188 	ldr	r1, [pc, #392]	@ 6c8 <TA_OpenSessionEntryPoint+0x34c>
+     53c:	e08f2002 	add	r2, pc, r2
+     540:	e08f0000 	add	r0, pc, r0
+     544:	e2822010 	add	r2, r2, #16
+     548:	e08f1001 	add	r1, pc, r1
+     54c:	ebfffffe 	bl	0 <uart_printf_func>
+     550:	eaffffb4 	b	428 <TA_OpenSessionEntryPoint+0xac>
+     554:	e59f1170 	ldr	r1, [pc, #368]	@ 6cc <TA_OpenSessionEntryPoint+0x350>
+     558:	e1a02000 	mov	r2, r0
+     55c:	e08f1001 	add	r1, pc, r1
+     560:	e1a00005 	mov	r0, r5
+     564:	ebfffffe 	bl	0 <TEE_MemCompare>
+     568:	e3500000 	cmp	r0, #0
+     56c:	1affffbe 	bne	46c <TA_OpenSessionEntryPoint+0xf0>
+     570:	e597001c 	ldr	r0, [r7, #28]
+     574:	e3a01000 	mov	r1, #0
+     578:	e2800008 	add	r0, r0, #8
+     57c:	ebfffffe 	bl	0 <TEE_Malloc>
+     580:	e2505000 	subs	r5, r0, #0
+     584:	0a000007 	beq	5a8 <TA_OpenSessionEntryPoint+0x22c>
+     588:	e1a00005 	mov	r0, r5
+     58c:	e597201c 	ldr	r2, [r7, #28]
+     590:	e4802004 	str	r2, [r0], #4
+     594:	e5971018 	ldr	r1, [r7, #24]
+     598:	ebfffffe 	bl	0 <TEE_MemMove>
+     59c:	e5885000 	str	r5, [r8]
+     5a0:	e3a00000 	mov	r0, #0
+     5a4:	eaffff86 	b	3c4 <TA_OpenSessionEntryPoint+0x48>
+     5a8:	e59f2120 	ldr	r2, [pc, #288]	@ 6d0 <TA_OpenSessionEntryPoint+0x354>
+     5ac:	e59f0120 	ldr	r0, [pc, #288]	@ 6d4 <TA_OpenSessionEntryPoint+0x358>
+     5b0:	e59f1120 	ldr	r1, [pc, #288]	@ 6d8 <TA_OpenSessionEntryPoint+0x35c>
+     5b4:	e08f2002 	add	r2, pc, r2
+     5b8:	e08f0000 	add	r0, pc, r0
+     5bc:	e2822028 	add	r2, r2, #40	@ 0x28
+     5c0:	e08f1001 	add	r1, pc, r1
+     5c4:	ebfffffe 	bl	0 <uart_printf_func>
+     5c8:	e59f010c 	ldr	r0, [pc, #268]	@ 6dc <TA_OpenSessionEntryPoint+0x360>
+     5cc:	eaffff7c 	b	3c4 <TA_OpenSessionEntryPoint+0x48>
+     5d0:	ebfffffe 	bl	0 <__stack_chk_fail>
+     5d4:	e59f1104 	ldr	r1, [pc, #260]	@ 6e0 <TA_OpenSessionEntryPoint+0x364>
+     5d8:	e1a00009 	mov	r0, r9
+     5dc:	e08f1001 	add	r1, pc, r1
+     5e0:	ebfffeee 	bl	1a0 <strToByte>
+     5e4:	e1a00009 	mov	r0, r9
+     5e8:	e2861004 	add	r1, r6, #4
+     5ec:	e1a0200a 	mov	r2, sl
+     5f0:	ebfffffe 	bl	0 <TEE_MemCompare>
+     5f4:	e3500000 	cmp	r0, #0
+     5f8:	0a000008 	beq	620 <TA_OpenSessionEntryPoint+0x2a4>
+     5fc:	e59f20e0 	ldr	r2, [pc, #224]	@ 6e4 <TA_OpenSessionEntryPoint+0x368>
+     600:	e59f00e0 	ldr	r0, [pc, #224]	@ 6e8 <TA_OpenSessionEntryPoint+0x36c>
+     604:	e59f10e0 	ldr	r1, [pc, #224]	@ 6ec <TA_OpenSessionEntryPoint+0x370>
+     608:	e08f2002 	add	r2, pc, r2
+     60c:	e08f0000 	add	r0, pc, r0
+     610:	e2822010 	add	r2, r2, #16
+     614:	e08f1001 	add	r1, pc, r1
+     618:	ebfffffe 	bl	0 <uart_printf_func>
+     61c:	eaffff81 	b	428 <TA_OpenSessionEntryPoint+0xac>
+     620:	e59f10c8 	ldr	r1, [pc, #200]	@ 6f0 <TA_OpenSessionEntryPoint+0x374>
+     624:	e1a00009 	mov	r0, r9
+     628:	e08f1001 	add	r1, pc, r1
+     62c:	ebfffedb 	bl	1a0 <strToByte>
+     630:	e28a1008 	add	r1, sl, #8
+     634:	e0861001 	add	r1, r6, r1
+     638:	e1a00009 	mov	r0, r9
+     63c:	e51b2130 	ldr	r2, [fp, #-304]	@ 0xfffffed0
+     640:	ebfffffe 	bl	0 <TEE_MemCompare>
+     644:	e3500000 	cmp	r0, #0
+     648:	0affffc8 	beq	570 <TA_OpenSessionEntryPoint+0x1f4>
+     64c:	e59f20a0 	ldr	r2, [pc, #160]	@ 6f4 <TA_OpenSessionEntryPoint+0x378>
+     650:	e59f00a0 	ldr	r0, [pc, #160]	@ 6f8 <TA_OpenSessionEntryPoint+0x37c>
+     654:	e59f10a0 	ldr	r1, [pc, #160]	@ 6fc <TA_OpenSessionEntryPoint+0x380>
+     658:	e08f2002 	add	r2, pc, r2
+     65c:	e08f0000 	add	r0, pc, r0
+     660:	e2822010 	add	r2, r2, #16
+     664:	e08f1001 	add	r1, pc, r1
+     668:	ebfffffe 	bl	0 <uart_printf_func>
+     66c:	eaffff6d 	b	428 <TA_OpenSessionEntryPoint+0xac>
+     670:	000002d4 	ldrdeq	r0, [r0], -r4
+     674:	00000000 	andeq	r0, r0, r0
+     678:	ffff0006 			@ <UNDEFINED> instruction: 0xffff0006
+     67c:	00000260 	andeq	r0, r0, r0, ror #4
+     680:	00000260 	andeq	r0, r0, r0, ror #4
+     684:	0000025c 	andeq	r0, r0, ip, asr r2
+     688:	0000024c 	andeq	r0, r0, ip, asr #4
+     68c:	0000024c 	andeq	r0, r0, ip, asr #4
+     690:	00000248 	andeq	r0, r0, r8, asr #4
+     694:	ffff0001 			@ <UNDEFINED> instruction: 0xffff0001
+     698:	000001f0 	strdeq	r0, [r0], -r0	@ <UNPREDICTABLE>
+     69c:	000001f0 	strdeq	r0, [r0], -r0	@ <UNPREDICTABLE>
+     6a0:	000001ec 	andeq	r0, r0, ip, ror #3
+     6a4:	000001cc 	andeq	r0, r0, ip, asr #3
+     6a8:	000001ac 	andeq	r0, r0, ip, lsr #3
+     6ac:	000001ac 	andeq	r0, r0, ip, lsr #3
+     6b0:	000001a8 	andeq	r0, r0, r8, lsr #3
+     6b4:	00000194 	muleq	r0, r4, r1
+     6b8:	00000194 	muleq	r0, r4, r1
+     6bc:	00000190 	muleq	r0, r0, r1
+     6c0:	0000017c 	andeq	r0, r0, ip, ror r1
+     6c4:	0000017c 	andeq	r0, r0, ip, ror r1
+     6c8:	00000178 	andeq	r0, r0, r8, ror r1
+     6cc:	00000168 	andeq	r0, r0, r8, ror #2
+     6d0:	00000114 	andeq	r0, r0, r4, lsl r1
+     6d4:	00000114 	andeq	r0, r0, r4, lsl r1
+     6d8:	00000110 	andeq	r0, r0, r0, lsl r1
+     6dc:	ffff0000 			@ <UNDEFINED> instruction: 0xffff0000
+     6e0:	000000fc 	strdeq	r0, [r0], -ip
+     6e4:	000000d4 	ldrdeq	r0, [r0], -r4
+     6e8:	000000d4 	ldrdeq	r0, [r0], -r4
+     6ec:	000000d0 	ldrdeq	r0, [r0], -r0	@ <UNPREDICTABLE>
+     6f0:	000000c0 	andeq	r0, r0, r0, asr #1
+     6f4:	00000094 	muleq	r0, r4, r0
+     6f8:	00000094 	muleq	r0, r4, r0
+     6fc:	00000090 	muleq	r0, r0, r0
+
+00000700 <TA_CloseSessionEntryPoint>:
+     700:	e59f303c 	ldr	r3, [pc, #60]	@ 744 <TA_CloseSessionEntryPoint+0x44>
+     704:	e92d4800 	push	{fp, lr}
+     708:	e59f2038 	ldr	r2, [pc, #56]	@ 748 <TA_CloseSessionEntryPoint+0x48>
+     70c:	e28db004 	add	fp, sp, #4
+     710:	e24dd008 	sub	sp, sp, #8
+     714:	e08f3003 	add	r3, pc, r3
+     718:	e7933002 	ldr	r3, [r3, r2]
+     71c:	e5932000 	ldr	r2, [r3]
+     720:	e50b2008 	str	r2, [fp, #-8]
+     724:	e51b2008 	ldr	r2, [fp, #-8]
+     728:	e5933000 	ldr	r3, [r3]
+     72c:	e1520003 	cmp	r2, r3
+     730:	1a000002 	bne	740 <TA_CloseSessionEntryPoint+0x40>
+     734:	e24bd004 	sub	sp, fp, #4
+     738:	e8bd4800 	pop	{fp, lr}
+     73c:	eafffffe 	b	0 <TEE_Free>
+     740:	ebfffffe 	bl	0 <__stack_chk_fail>
+     744:	00000028 	andeq	r0, r0, r8, lsr #32
+     748:	00000000 	andeq	r0, r0, r0
+
+0000074c <TA_InvokeCommandEntryPoint>:
+     74c:	e59f29a0 	ldr	r2, [pc, #2464]	@ 10f4 <TA_InvokeCommandEntryPoint+0x9a8>
+     750:	e92d4ff0 	push	{r4, r5, r6, r7, r8, r9, sl, fp, lr}
+     754:	e59fc99c 	ldr	ip, [pc, #2460]	@ 10f8 <TA_InvokeCommandEntryPoint+0x9ac>
+     758:	e28db020 	add	fp, sp, #32
+     75c:	e24dd0dc 	sub	sp, sp, #220	@ 0xdc
+     760:	e08f2002 	add	r2, pc, r2
+     764:	e792500c 	ldr	r5, [r2, ip]
+     768:	e1a08001 	mov	r8, r1
+     76c:	e5951000 	ldr	r1, [r5]
+     770:	e50b1028 	str	r1, [fp, #-40]	@ 0xffffffd8
+     774:	e1a07000 	mov	r7, r0
+     778:	e1a06003 	mov	r6, r3
+     77c:	ebfffffe 	bl	0 <get_current_session_id>
+     780:	e2481011 	sub	r1, r8, #17
+     784:	e1a04000 	mov	r4, r0
+     788:	e351000a 	cmp	r1, #10
+     78c:	908ff101 	addls	pc, pc, r1, lsl #2
+     790:	ea0000b8 	b	a78 <TA_InvokeCommandEntryPoint+0x32c>
+     794:	ea000016 	b	7f4 <TA_InvokeCommandEntryPoint+0xa8>
+     798:	ea000050 	b	8e0 <TA_InvokeCommandEntryPoint+0x194>
+     79c:	ea00005a 	b	90c <TA_InvokeCommandEntryPoint+0x1c0>
+     7a0:	ea000070 	b	968 <TA_InvokeCommandEntryPoint+0x21c>
+     7a4:	ea00007e 	b	9a4 <TA_InvokeCommandEntryPoint+0x258>
+     7a8:	ea00008e 	b	9e8 <TA_InvokeCommandEntryPoint+0x29c>
+     7ac:	ea0000b1 	b	a78 <TA_InvokeCommandEntryPoint+0x32c>
+     7b0:	ea0000b0 	b	a78 <TA_InvokeCommandEntryPoint+0x32c>
+     7b4:	ea000094 	b	a0c <TA_InvokeCommandEntryPoint+0x2c0>
+     7b8:	ea00009e 	b	a38 <TA_InvokeCommandEntryPoint+0x2ec>
+     7bc:	eaffffff 	b	7c0 <TA_InvokeCommandEntryPoint+0x74>
+     7c0:	e5961000 	ldr	r1, [r6]
+     7c4:	ebfffe9b 	bl	238 <search_object>
+     7c8:	e3500000 	cmp	r0, #0
+     7cc:	0a00012e 	beq	c8c <TA_InvokeCommandEntryPoint+0x540>
+     7d0:	ebfffffe 	bl	0 <TEE_SyncPersistentObject>
+     7d4:	e1a07000 	mov	r7, r0
+     7d8:	e51b2028 	ldr	r2, [fp, #-40]	@ 0xffffffd8
+     7dc:	e5953000 	ldr	r3, [r5]
+     7e0:	e1a00007 	mov	r0, r7
+     7e4:	e1520003 	cmp	r2, r3
+     7e8:	1a0001a7 	bne	e8c <TA_InvokeCommandEntryPoint+0x740>
+     7ec:	e24bd020 	sub	sp, fp, #32
+     7f0:	e8bd8ff0 	pop	{r4, r5, r6, r7, r8, r9, sl, fp, pc}
+     7f4:	e24b80ac 	sub	r8, fp, #172	@ 0xac
+     7f8:	e1a00008 	mov	r0, r8
+     7fc:	e3a01000 	mov	r1, #0
+     800:	e3a02080 	mov	r2, #128	@ 0x80
+     804:	e24ba0cc 	sub	sl, fp, #204	@ 0xcc
+     808:	ebfffffe 	bl	0 <TEE_MemFill>
+     80c:	e5963004 	ldr	r3, [r6, #4]
+     810:	e1a0000a 	mov	r0, sl
+     814:	e3a01000 	mov	r1, #0
+     818:	e3a02020 	mov	r2, #32
+     81c:	e50b30e0 	str	r3, [fp, #-224]	@ 0xffffff20
+     820:	e5969000 	ldr	r9, [r6]
+     824:	ebfffffe 	bl	0 <TEE_MemFill>
+     828:	e5970000 	ldr	r0, [r7]
+     82c:	e50b00d8 	str	r0, [fp, #-216]	@ 0xffffff28
+     830:	e3a01000 	mov	r1, #0
+     834:	e2800081 	add	r0, r0, #129	@ 0x81
+     838:	ebfffffe 	bl	0 <TEE_Malloc>
+     83c:	e3500000 	cmp	r0, #0
+     840:	e50b00dc 	str	r0, [fp, #-220]	@ 0xffffff24
+     844:	0a00010e 	beq	c84 <TA_InvokeCommandEntryPoint+0x538>
+     848:	e51b30e0 	ldr	r3, [fp, #-224]	@ 0xffffff20
+     84c:	e2430001 	sub	r0, r3, #1
+     850:	e3500000 	cmp	r0, #0
+     854:	e1a02000 	mov	r2, r0
+     858:	da0000aa 	ble	b08 <TA_InvokeCommandEntryPoint+0x3bc>
+     85c:	e7d91000 	ldrb	r1, [r9, r0]
+     860:	e351002f 	cmp	r1, #47	@ 0x2f
+     864:	1a000004 	bne	87c <TA_InvokeCommandEntryPoint+0x130>
+     868:	ea000143 	b	d7c <TA_InvokeCommandEntryPoint+0x630>
+     86c:	e7d93002 	ldrb	r3, [r9, r2]
+     870:	e1a0c002 	mov	ip, r2
+     874:	e353002f 	cmp	r3, #47	@ 0x2f
+     878:	0a0000a3 	beq	b0c <TA_InvokeCommandEntryPoint+0x3c0>
+     87c:	e2522001 	subs	r2, r2, #1
+     880:	1afffff9 	bne	86c <TA_InvokeCommandEntryPoint+0x120>
+     884:	e1a0c002 	mov	ip, r2
+     888:	e59f286c 	ldr	r2, [pc, #2156]	@ 10fc <TA_InvokeCommandEntryPoint+0x9b0>
+     88c:	e59f086c 	ldr	r0, [pc, #2156]	@ 1100 <TA_InvokeCommandEntryPoint+0x9b4>
+     890:	e59f186c 	ldr	r1, [pc, #2156]	@ 1104 <TA_InvokeCommandEntryPoint+0x9b8>
+     894:	e08f2002 	add	r2, pc, r2
+     898:	e1a0300c 	mov	r3, ip
+     89c:	e2822044 	add	r2, r2, #68	@ 0x44
+     8a0:	e08f0000 	add	r0, pc, r0
+     8a4:	e08f1001 	add	r1, pc, r1
+     8a8:	ebfffffe 	bl	0 <uart_printf_func>
+     8ac:	e51b00dc 	ldr	r0, [fp, #-220]	@ 0xffffff24
+     8b0:	ebfffffe 	bl	0 <TEE_Free>
+     8b4:	e59f784c 	ldr	r7, [pc, #2124]	@ 1108 <TA_InvokeCommandEntryPoint+0x9bc>
+     8b8:	e59f284c 	ldr	r2, [pc, #2124]	@ 110c <TA_InvokeCommandEntryPoint+0x9c0>
+     8bc:	e59f084c 	ldr	r0, [pc, #2124]	@ 1110 <TA_InvokeCommandEntryPoint+0x9c4>
+     8c0:	e59f184c 	ldr	r1, [pc, #2124]	@ 1114 <TA_InvokeCommandEntryPoint+0x9c8>
+     8c4:	e08f2002 	add	r2, pc, r2
+     8c8:	e08f0000 	add	r0, pc, r0
+     8cc:	e2822058 	add	r2, r2, #88	@ 0x58
+     8d0:	e08f1001 	add	r1, pc, r1
+     8d4:	e1a03007 	mov	r3, r7
+     8d8:	ebfffffe 	bl	0 <uart_printf_func>
+     8dc:	eaffffbd 	b	7d8 <TA_InvokeCommandEntryPoint+0x8c>
+     8e0:	e5961000 	ldr	r1, [r6]
+     8e4:	ebfffe53 	bl	238 <search_object>
+     8e8:	e2506000 	subs	r6, r0, #0
+     8ec:	0a0000d0 	beq	c34 <TA_InvokeCommandEntryPoint+0x4e8>
+     8f0:	e1a00004 	mov	r0, r4
+     8f4:	e1a01006 	mov	r1, r6
+     8f8:	ebfffdc0 	bl	0 <delete_object>
+     8fc:	e1a00006 	mov	r0, r6
+     900:	ebfffffe 	bl	0 <TEE_CloseObject>
+     904:	e3a07000 	mov	r7, #0
+     908:	eaffffb2 	b	7d8 <TA_InvokeCommandEntryPoint+0x8c>
+     90c:	e59f3804 	ldr	r3, [pc, #2052]	@ 1118 <TA_InvokeCommandEntryPoint+0x9cc>
+     910:	e08f3003 	add	r3, pc, r3
+     914:	e8930084 	ldm	r3, {r2, r7}
+     918:	e3520000 	cmp	r2, #0
+     91c:	0a0000e4 	beq	cb4 <TA_InvokeCommandEntryPoint+0x568>
+     920:	e59f27f4 	ldr	r2, [pc, #2036]	@ 111c <TA_InvokeCommandEntryPoint+0x9d0>
+     924:	e247600c 	sub	r6, r7, #12
+     928:	e08f2002 	add	r2, pc, r2
+     92c:	e1520007 	cmp	r2, r7
+     930:	0a00000a 	beq	960 <TA_InvokeCommandEntryPoint+0x214>
+     934:	e517300c 	ldr	r3, [r7, #-12]
+     938:	e1540003 	cmp	r4, r3
+     93c:	1a000003 	bne	950 <TA_InvokeCommandEntryPoint+0x204>
+     940:	ea00004e 	b	a80 <TA_InvokeCommandEntryPoint+0x334>
+     944:	e513300c 	ldr	r3, [r3, #-12]
+     948:	e1540003 	cmp	r4, r3
+     94c:	0a00004b 	beq	a80 <TA_InvokeCommandEntryPoint+0x334>
+     950:	e5963010 	ldr	r3, [r6, #16]
+     954:	e1520003 	cmp	r2, r3
+     958:	e243600c 	sub	r6, r3, #12
+     95c:	1afffff8 	bne	944 <TA_InvokeCommandEntryPoint+0x1f8>
+     960:	e3a07000 	mov	r7, #0
+     964:	eaffff9b 	b	7d8 <TA_InvokeCommandEntryPoint+0x8c>
+     968:	e5961000 	ldr	r1, [r6]
+     96c:	e5964008 	ldr	r4, [r6, #8]
+     970:	e596700c 	ldr	r7, [r6, #12]
+     974:	ebfffe2f 	bl	238 <search_object>
+     978:	e3500000 	cmp	r0, #0
+     97c:	0a0000a2 	beq	c0c <TA_InvokeCommandEntryPoint+0x4c0>
+     980:	e24b30d0 	sub	r3, fp, #208	@ 0xd0
+     984:	e1a02007 	mov	r2, r7
+     988:	e1a01004 	mov	r1, r4
+     98c:	ebfffffe 	bl	0 <TEE_ReadObjectData>
+     990:	e2507000 	subs	r7, r0, #0
+     994:	051b30d0 	ldreq	r3, [fp, #-208]	@ 0xffffff30
+     998:	13a03000 	movne	r3, #0
+     99c:	e5863010 	str	r3, [r6, #16]
+     9a0:	eaffff8c 	b	7d8 <TA_InvokeCommandEntryPoint+0x8c>
+     9a4:	e5961000 	ldr	r1, [r6]
+     9a8:	e5967008 	ldr	r7, [r6, #8]
+     9ac:	e596800c 	ldr	r8, [r6, #12]
+     9b0:	ebfffe20 	bl	238 <search_object>
+     9b4:	e2504000 	subs	r4, r0, #0
+     9b8:	0a000089 	beq	be4 <TA_InvokeCommandEntryPoint+0x498>
+     9bc:	e5943108 	ldr	r3, [r4, #264]	@ 0x108
+     9c0:	e1a01007 	mov	r1, r7
+     9c4:	e1a02008 	mov	r2, r8
+     9c8:	e5938010 	ldr	r8, [r3, #16]
+     9cc:	ebfffffe 	bl	0 <TEE_WriteObjectData>
+     9d0:	e5943108 	ldr	r3, [r4, #264]	@ 0x108
+     9d4:	e5933010 	ldr	r3, [r3, #16]
+     9d8:	e0688003 	rsb	r8, r8, r3
+     9dc:	e5868010 	str	r8, [r6, #16]
+     9e0:	e1a07000 	mov	r7, r0
+     9e4:	eaffff7b 	b	7d8 <TA_InvokeCommandEntryPoint+0x8c>
+     9e8:	e8960052 	ldm	r6, {r1, r4, r6}
+     9ec:	ebfffe11 	bl	238 <search_object>
+     9f0:	e3500000 	cmp	r0, #0
+     9f4:	0a000070 	beq	bbc <TA_InvokeCommandEntryPoint+0x470>
+     9f8:	e20620ff 	and	r2, r6, #255	@ 0xff
+     9fc:	e1a01004 	mov	r1, r4
+     a00:	ebfffffe 	bl	0 <TEE_SeekObjectData>
+     a04:	e1a07000 	mov	r7, r0
+     a08:	eaffff72 	b	7d8 <TA_InvokeCommandEntryPoint+0x8c>
+     a0c:	e5961000 	ldr	r1, [r6]
+     a10:	ebfffe08 	bl	238 <search_object>
+     a14:	e2506000 	subs	r6, r0, #0
+     a18:	0a00005d 	beq	b94 <TA_InvokeCommandEntryPoint+0x448>
+     a1c:	e1a00004 	mov	r0, r4
+     a20:	e1a01006 	mov	r1, r6
+     a24:	ebfffd75 	bl	0 <delete_object>
+     a28:	e1a00006 	mov	r0, r6
+     a2c:	ebfffffe 	bl	0 <TEE_CloseAndDeletePersistentObject>
+     a30:	e3a07000 	mov	r7, #0
+     a34:	eaffff67 	b	7d8 <TA_InvokeCommandEntryPoint+0x8c>
+     a38:	e3a03000 	mov	r3, #0
+     a3c:	e5961000 	ldr	r1, [r6]
+     a40:	e50b30d4 	str	r3, [fp, #-212]	@ 0xffffff2c
+     a44:	e50b30d0 	str	r3, [fp, #-208]	@ 0xffffff30
+     a48:	ebfffdfa 	bl	238 <search_object>
+     a4c:	e3500000 	cmp	r0, #0
+     a50:	0a000081 	beq	c5c <TA_InvokeCommandEntryPoint+0x510>
+     a54:	e24b10d4 	sub	r1, fp, #212	@ 0xd4
+     a58:	e24b20d0 	sub	r2, fp, #208	@ 0xd0
+     a5c:	ebfffffe 	bl	0 <TEE_InfoObjectData>
+     a60:	e2507000 	subs	r7, r0, #0
+     a64:	051b20d4 	ldreq	r2, [fp, #-212]	@ 0xffffff2c
+     a68:	051b30d0 	ldreq	r3, [fp, #-208]	@ 0xffffff30
+     a6c:	05862008 	streq	r2, [r6, #8]
+     a70:	0586300c 	streq	r3, [r6, #12]
+     a74:	eaffff57 	b	7d8 <TA_InvokeCommandEntryPoint+0x8c>
+     a78:	e59f76a0 	ldr	r7, [pc, #1696]	@ 1120 <TA_InvokeCommandEntryPoint+0x9d4>
+     a7c:	eaffff55 	b	7d8 <TA_InvokeCommandEntryPoint+0x8c>
+     a80:	e5963008 	ldr	r3, [r6, #8]
+     a84:	e2434004 	sub	r4, r3, #4
+     a88:	e5937004 	ldr	r7, [r3, #4]
+     a8c:	e1560004 	cmp	r6, r4
+     a90:	e2477004 	sub	r7, r7, #4
+     a94:	13a08000 	movne	r8, #0
+     a98:	1a000002 	bne	aa8 <TA_InvokeCommandEntryPoint+0x35c>
+     a9c:	ea00000f 	b	ae0 <TA_InvokeCommandEntryPoint+0x394>
+     aa0:	e1a04007 	mov	r4, r7
+     aa4:	e1a07003 	mov	r7, r3
+     aa8:	e5940000 	ldr	r0, [r4]
+     aac:	ebfffffe 	bl	0 <TEE_CloseObject>
+     ab0:	e5943004 	ldr	r3, [r4, #4]
+     ab4:	e5942008 	ldr	r2, [r4, #8]
+     ab8:	e1a00004 	mov	r0, r4
+     abc:	e5823000 	str	r3, [r2]
+     ac0:	e5832004 	str	r2, [r3, #4]
+     ac4:	e5848008 	str	r8, [r4, #8]
+     ac8:	e5848004 	str	r8, [r4, #4]
+     acc:	ebfffffe 	bl	0 <TEE_Free>
+     ad0:	e5973008 	ldr	r3, [r7, #8]
+     ad4:	e1570006 	cmp	r7, r6
+     ad8:	e2433004 	sub	r3, r3, #4
+     adc:	1affffef 	bne	aa0 <TA_InvokeCommandEntryPoint+0x354>
+     ae0:	e596300c 	ldr	r3, [r6, #12]
+     ae4:	e5962010 	ldr	r2, [r6, #16]
+     ae8:	e3a07000 	mov	r7, #0
+     aec:	e5823000 	str	r3, [r2]
+     af0:	e1a00006 	mov	r0, r6
+     af4:	e5832004 	str	r2, [r3, #4]
+     af8:	e5867010 	str	r7, [r6, #16]
+     afc:	e586700c 	str	r7, [r6, #12]
+     b00:	ebfffffe 	bl	0 <TEE_Free>
+     b04:	eaffff33 	b	7d8 <TA_InvokeCommandEntryPoint+0x8c>
+     b08:	e3a0c000 	mov	ip, #0
+     b0c:	e150000c 	cmp	r0, ip
+     b10:	0affff5c 	beq	888 <TA_InvokeCommandEntryPoint+0x13c>
+     b14:	e24c2001 	sub	r2, ip, #1
+     b18:	e352003e 	cmp	r2, #62	@ 0x3e
+     b1c:	8affff59 	bhi	888 <TA_InvokeCommandEntryPoint+0x13c>
+     b20:	e59f25fc 	ldr	r2, [pc, #1532]	@ 1124 <TA_InvokeCommandEntryPoint+0x9d8>
+     b24:	e1a00009 	mov	r0, r9
+     b28:	e08f2002 	add	r2, pc, r2
+     b2c:	e1a01002 	mov	r1, r2
+     b30:	e50bc0e8 	str	ip, [fp, #-232]	@ 0xffffff18
+     b34:	e50b20e4 	str	r2, [fp, #-228]	@ 0xffffff1c
+     b38:	ebfffffe 	bl	0 <strstr>
+     b3c:	e51bc0e8 	ldr	ip, [fp, #-232]	@ 0xffffff18
+     b40:	e1590000 	cmp	r9, r0
+     b44:	0a0000a5 	beq	de0 <TA_InvokeCommandEntryPoint+0x694>
+     b48:	e1a00009 	mov	r0, r9
+     b4c:	e50bc0e8 	str	ip, [fp, #-232]	@ 0xffffff18
+     b50:	ebfffffe 	bl	0 <strlen>
+     b54:	e51bc0e8 	ldr	ip, [fp, #-232]	@ 0xffffff18
+     b58:	e2803011 	add	r3, r0, #17
+     b5c:	e3530080 	cmp	r3, #128	@ 0x80
+     b60:	9a000056 	bls	cc0 <TA_InvokeCommandEntryPoint+0x574>
+     b64:	e59f25bc 	ldr	r2, [pc, #1468]	@ 1128 <TA_InvokeCommandEntryPoint+0x9dc>
+     b68:	e59f05bc 	ldr	r0, [pc, #1468]	@ 112c <TA_InvokeCommandEntryPoint+0x9e0>
+     b6c:	e59f15bc 	ldr	r1, [pc, #1468]	@ 1130 <TA_InvokeCommandEntryPoint+0x9e4>
+     b70:	e08f2002 	add	r2, pc, r2
+     b74:	e2822044 	add	r2, r2, #68	@ 0x44
+     b78:	e08f0000 	add	r0, pc, r0
+     b7c:	e08f1001 	add	r1, pc, r1
+     b80:	ebfffffe 	bl	0 <uart_printf_func>
+     b84:	e51b00dc 	ldr	r0, [fp, #-220]	@ 0xffffff24
+     b88:	ebfffffe 	bl	0 <TEE_Free>
+     b8c:	e59f7574 	ldr	r7, [pc, #1396]	@ 1108 <TA_InvokeCommandEntryPoint+0x9bc>
+     b90:	eaffff48 	b	8b8 <TA_InvokeCommandEntryPoint+0x16c>
+     b94:	e59f2598 	ldr	r2, [pc, #1432]	@ 1134 <TA_InvokeCommandEntryPoint+0x9e8>
+     b98:	e59f0598 	ldr	r0, [pc, #1432]	@ 1138 <TA_InvokeCommandEntryPoint+0x9ec>
+     b9c:	e59f1598 	ldr	r1, [pc, #1432]	@ 113c <TA_InvokeCommandEntryPoint+0x9f0>
+     ba0:	e08f2002 	add	r2, pc, r2
+     ba4:	e08f0000 	add	r0, pc, r0
+     ba8:	e28220cc 	add	r2, r2, #204	@ 0xcc
+     bac:	e08f1001 	add	r1, pc, r1
+     bb0:	ebfffffe 	bl	0 <uart_printf_func>
+     bb4:	e59f754c 	ldr	r7, [pc, #1356]	@ 1108 <TA_InvokeCommandEntryPoint+0x9bc>
+     bb8:	eaffff06 	b	7d8 <TA_InvokeCommandEntryPoint+0x8c>
+     bbc:	e59f257c 	ldr	r2, [pc, #1404]	@ 1140 <TA_InvokeCommandEntryPoint+0x9f4>
+     bc0:	e59f057c 	ldr	r0, [pc, #1404]	@ 1144 <TA_InvokeCommandEntryPoint+0x9f8>
+     bc4:	e59f157c 	ldr	r1, [pc, #1404]	@ 1148 <TA_InvokeCommandEntryPoint+0x9fc>
+     bc8:	e08f2002 	add	r2, pc, r2
+     bcc:	e08f0000 	add	r0, pc, r0
+     bd0:	e28220b8 	add	r2, r2, #184	@ 0xb8
+     bd4:	e08f1001 	add	r1, pc, r1
+     bd8:	ebfffffe 	bl	0 <uart_printf_func>
+     bdc:	e59f7524 	ldr	r7, [pc, #1316]	@ 1108 <TA_InvokeCommandEntryPoint+0x9bc>
+     be0:	eafffefc 	b	7d8 <TA_InvokeCommandEntryPoint+0x8c>
+     be4:	e59f2560 	ldr	r2, [pc, #1376]	@ 114c <TA_InvokeCommandEntryPoint+0xa00>
+     be8:	e59f0560 	ldr	r0, [pc, #1376]	@ 1150 <TA_InvokeCommandEntryPoint+0xa04>
+     bec:	e59f1560 	ldr	r1, [pc, #1376]	@ 1154 <TA_InvokeCommandEntryPoint+0xa08>
+     bf0:	e08f2002 	add	r2, pc, r2
+     bf4:	e08f0000 	add	r0, pc, r0
+     bf8:	e28220a4 	add	r2, r2, #164	@ 0xa4
+     bfc:	e08f1001 	add	r1, pc, r1
+     c00:	ebfffffe 	bl	0 <uart_printf_func>
+     c04:	e59f74fc 	ldr	r7, [pc, #1276]	@ 1108 <TA_InvokeCommandEntryPoint+0x9bc>
+     c08:	eafffef2 	b	7d8 <TA_InvokeCommandEntryPoint+0x8c>
+     c0c:	e59f2544 	ldr	r2, [pc, #1348]	@ 1158 <TA_InvokeCommandEntryPoint+0xa0c>
+     c10:	e59f0544 	ldr	r0, [pc, #1348]	@ 115c <TA_InvokeCommandEntryPoint+0xa10>
+     c14:	e59f1544 	ldr	r1, [pc, #1348]	@ 1160 <TA_InvokeCommandEntryPoint+0xa14>
+     c18:	e08f2002 	add	r2, pc, r2
+     c1c:	e08f0000 	add	r0, pc, r0
+     c20:	e2822090 	add	r2, r2, #144	@ 0x90
+     c24:	e08f1001 	add	r1, pc, r1
+     c28:	ebfffffe 	bl	0 <uart_printf_func>
+     c2c:	e59f74d4 	ldr	r7, [pc, #1236]	@ 1108 <TA_InvokeCommandEntryPoint+0x9bc>
+     c30:	eafffee8 	b	7d8 <TA_InvokeCommandEntryPoint+0x8c>
+     c34:	e59f2528 	ldr	r2, [pc, #1320]	@ 1164 <TA_InvokeCommandEntryPoint+0xa18>
+     c38:	e59f0528 	ldr	r0, [pc, #1320]	@ 1168 <TA_InvokeCommandEntryPoint+0xa1c>
+     c3c:	e59f1528 	ldr	r1, [pc, #1320]	@ 116c <TA_InvokeCommandEntryPoint+0xa20>
+     c40:	e08f2002 	add	r2, pc, r2
+     c44:	e08f0000 	add	r0, pc, r0
+     c48:	e282207c 	add	r2, r2, #124	@ 0x7c
+     c4c:	e08f1001 	add	r1, pc, r1
+     c50:	ebfffffe 	bl	0 <uart_printf_func>
+     c54:	e59f74ac 	ldr	r7, [pc, #1196]	@ 1108 <TA_InvokeCommandEntryPoint+0x9bc>
+     c58:	eafffede 	b	7d8 <TA_InvokeCommandEntryPoint+0x8c>
+     c5c:	e59f250c 	ldr	r2, [pc, #1292]	@ 1170 <TA_InvokeCommandEntryPoint+0xa24>
+     c60:	e59f050c 	ldr	r0, [pc, #1292]	@ 1174 <TA_InvokeCommandEntryPoint+0xa28>
+     c64:	e59f150c 	ldr	r1, [pc, #1292]	@ 1178 <TA_InvokeCommandEntryPoint+0xa2c>
+     c68:	e08f2002 	add	r2, pc, r2
+     c6c:	e08f0000 	add	r0, pc, r0
+     c70:	e28220e8 	add	r2, r2, #232	@ 0xe8
+     c74:	e08f1001 	add	r1, pc, r1
+     c78:	ebfffffe 	bl	0 <uart_printf_func>
+     c7c:	e59f7484 	ldr	r7, [pc, #1156]	@ 1108 <TA_InvokeCommandEntryPoint+0x9bc>
+     c80:	eafffed4 	b	7d8 <TA_InvokeCommandEntryPoint+0x8c>
+     c84:	e59f74f0 	ldr	r7, [pc, #1264]	@ 117c <TA_InvokeCommandEntryPoint+0xa30>
+     c88:	eaffff0a 	b	8b8 <TA_InvokeCommandEntryPoint+0x16c>
+     c8c:	e59f24ec 	ldr	r2, [pc, #1260]	@ 1180 <TA_InvokeCommandEntryPoint+0xa34>
+     c90:	e59f04ec 	ldr	r0, [pc, #1260]	@ 1184 <TA_InvokeCommandEntryPoint+0xa38>
+     c94:	e59f14ec 	ldr	r1, [pc, #1260]	@ 1188 <TA_InvokeCommandEntryPoint+0xa3c>
+     c98:	e08f2002 	add	r2, pc, r2
+     c9c:	e08f0000 	add	r0, pc, r0
+     ca0:	e28220fc 	add	r2, r2, #252	@ 0xfc
+     ca4:	e08f1001 	add	r1, pc, r1
+     ca8:	ebfffffe 	bl	0 <uart_printf_func>
+     cac:	e59f7454 	ldr	r7, [pc, #1108]	@ 1108 <TA_InvokeCommandEntryPoint+0x9bc>
+     cb0:	eafffec8 	b	7d8 <TA_InvokeCommandEntryPoint+0x8c>
+     cb4:	e3570000 	cmp	r7, #0
+     cb8:	1affff18 	bne	920 <TA_InvokeCommandEntryPoint+0x1d4>
+     cbc:	eafffec5 	b	7d8 <TA_InvokeCommandEntryPoint+0x8c>
+     cc0:	e51b10e4 	ldr	r1, [fp, #-228]	@ 0xffffff1c
+     cc4:	e3a02011 	mov	r2, #17
+     cc8:	e51b00dc 	ldr	r0, [fp, #-220]	@ 0xffffff24
+     ccc:	e50bc0e8 	str	ip, [fp, #-232]	@ 0xffffff18
+     cd0:	ebfffffe 	bl	0 <memcpy>
+     cd4:	e1a00009 	mov	r0, r9
+     cd8:	ebfffffe 	bl	0 <strlen>
+     cdc:	e51b30e0 	ldr	r3, [fp, #-224]	@ 0xffffff20
+     ce0:	e51bc0e8 	ldr	ip, [fp, #-232]	@ 0xffffff18
+     ce4:	e2833011 	add	r3, r3, #17
+     ce8:	e28cc011 	add	ip, ip, #17
+     cec:	e1a01009 	mov	r1, r9
+     cf0:	e50bc0e8 	str	ip, [fp, #-232]	@ 0xffffff18
+     cf4:	e50b30e0 	str	r3, [fp, #-224]	@ 0xffffff20
+     cf8:	e2802001 	add	r2, r0, #1
+     cfc:	e51b00dc 	ldr	r0, [fp, #-220]	@ 0xffffff24
+     d00:	ebfffffe 	bl	0 <strncat>
+     d04:	e51bc0e8 	ldr	ip, [fp, #-232]	@ 0xffffff18
+     d08:	e51b20dc 	ldr	r2, [fp, #-220]	@ 0xffffff24
+     d0c:	e51b30e0 	ldr	r3, [fp, #-224]	@ 0xffffff20
+     d10:	e2871004 	add	r1, r7, #4
+     d14:	e0820003 	add	r0, r2, r3
+     d18:	e5972000 	ldr	r2, [r7]
+     d1c:	e50bc0e8 	str	ip, [fp, #-232]	@ 0xffffff18
+     d20:	ebfffffe 	bl	0 <TEE_MemMove>
+     d24:	e3a0e020 	mov	lr, #32
+     d28:	e24b00d4 	sub	r0, fp, #212	@ 0xd4
+     d2c:	e3a01245 	mov	r1, #1342177284	@ 0x50000004
+     d30:	e3a02005 	mov	r2, #5
+     d34:	e3a03000 	mov	r3, #0
+     d38:	e50be0d0 	str	lr, [fp, #-208]	@ 0xffffff30
+     d3c:	ebfffffe 	bl	0 <TEE_AllocateOperation>
+     d40:	e51bc0e8 	ldr	ip, [fp, #-232]	@ 0xffffff18
+     d44:	e2507000 	subs	r7, r0, #0
+     d48:	0a00000d 	beq	d84 <TA_InvokeCommandEntryPoint+0x638>
+     d4c:	e59f2438 	ldr	r2, [pc, #1080]	@ 118c <TA_InvokeCommandEntryPoint+0xa40>
+     d50:	e59f0438 	ldr	r0, [pc, #1080]	@ 1190 <TA_InvokeCommandEntryPoint+0xa44>
+     d54:	e59f1438 	ldr	r1, [pc, #1080]	@ 1194 <TA_InvokeCommandEntryPoint+0xa48>
+     d58:	e08f2002 	add	r2, pc, r2
+     d5c:	e08f0000 	add	r0, pc, r0
+     d60:	e2822044 	add	r2, r2, #68	@ 0x44
+     d64:	e08f1001 	add	r1, pc, r1
+     d68:	e1a03007 	mov	r3, r7
+     d6c:	ebfffffe 	bl	0 <uart_printf_func>
+     d70:	e51b00dc 	ldr	r0, [fp, #-220]	@ 0xffffff24
+     d74:	ebfffffe 	bl	0 <TEE_Free>
+     d78:	eafffece 	b	8b8 <TA_InvokeCommandEntryPoint+0x16c>
+     d7c:	e1a0c000 	mov	ip, r0
+     d80:	eafffec0 	b	888 <TA_InvokeCommandEntryPoint+0x13c>
+     d84:	e51b00d8 	ldr	r0, [fp, #-216]	@ 0xffffff28
+     d88:	e28c3001 	add	r3, ip, #1
+     d8c:	e2802080 	add	r2, r0, #128	@ 0x80
+     d90:	e51b00dc 	ldr	r0, [fp, #-220]	@ 0xffffff24
+     d94:	e06c2002 	rsb	r2, ip, r2
+     d98:	e0801003 	add	r1, r0, r3
+     d9c:	e51b00d4 	ldr	r0, [fp, #-212]	@ 0xffffff2c
+     da0:	e50b30d8 	str	r3, [fp, #-216]	@ 0xffffff28
+     da4:	ebfffffe 	bl	0 <TEE_DigestUpdate>
+     da8:	e2507000 	subs	r7, r0, #0
+     dac:	0a00001c 	beq	e24 <TA_InvokeCommandEntryPoint+0x6d8>
+     db0:	e59f23e0 	ldr	r2, [pc, #992]	@ 1198 <TA_InvokeCommandEntryPoint+0xa4c>
+     db4:	e59f03e0 	ldr	r0, [pc, #992]	@ 119c <TA_InvokeCommandEntryPoint+0xa50>
+     db8:	e59f13e0 	ldr	r1, [pc, #992]	@ 11a0 <TA_InvokeCommandEntryPoint+0xa54>
+     dbc:	e08f2002 	add	r2, pc, r2
+     dc0:	e08f0000 	add	r0, pc, r0
+     dc4:	e2822044 	add	r2, r2, #68	@ 0x44
+     dc8:	e08f1001 	add	r1, pc, r1
+     dcc:	e1a03007 	mov	r3, r7
+     dd0:	ebfffffe 	bl	0 <uart_printf_func>
+     dd4:	e51b00d4 	ldr	r0, [fp, #-212]	@ 0xffffff2c
+     dd8:	ebfffffe 	bl	0 <TEE_FreeOperation>
+     ddc:	eaffffe3 	b	d70 <TA_InvokeCommandEntryPoint+0x624>
+     de0:	ebfffffe 	bl	0 <strlen>
+     de4:	e51bc0e8 	ldr	ip, [fp, #-232]	@ 0xffffff18
+     de8:	e3500080 	cmp	r0, #128	@ 0x80
+     dec:	9a00001f 	bls	e70 <TA_InvokeCommandEntryPoint+0x724>
+     df0:	e59f23ac 	ldr	r2, [pc, #940]	@ 11a4 <TA_InvokeCommandEntryPoint+0xa58>
+     df4:	e1a03000 	mov	r3, r0
+     df8:	e59f13a8 	ldr	r1, [pc, #936]	@ 11a8 <TA_InvokeCommandEntryPoint+0xa5c>
+     dfc:	e59f03a8 	ldr	r0, [pc, #936]	@ 11ac <TA_InvokeCommandEntryPoint+0xa60>
+     e00:	e08f2002 	add	r2, pc, r2
+     e04:	e2822044 	add	r2, r2, #68	@ 0x44
+     e08:	e08f0000 	add	r0, pc, r0
+     e0c:	e08f1001 	add	r1, pc, r1
+     e10:	ebfffffe 	bl	0 <uart_printf_func>
+     e14:	e51b00dc 	ldr	r0, [fp, #-220]	@ 0xffffff24
+     e18:	ebfffffe 	bl	0 <TEE_Free>
+     e1c:	e59f72e4 	ldr	r7, [pc, #740]	@ 1108 <TA_InvokeCommandEntryPoint+0x9bc>
+     e20:	eafffea4 	b	8b8 <TA_InvokeCommandEntryPoint+0x16c>
+     e24:	e24b90d0 	sub	r9, fp, #208	@ 0xd0
+     e28:	e1a01007 	mov	r1, r7
+     e2c:	e1a02007 	mov	r2, r7
+     e30:	e51b00d4 	ldr	r0, [fp, #-212]	@ 0xffffff2c
+     e34:	e58d9000 	str	r9, [sp]
+     e38:	e1a0300a 	mov	r3, sl
+     e3c:	ebfffffe 	bl	0 <TEE_DigestDoFinal>
+     e40:	e2507000 	subs	r7, r0, #0
+     e44:	0a000011 	beq	e90 <TA_InvokeCommandEntryPoint+0x744>
+     e48:	e59f2360 	ldr	r2, [pc, #864]	@ 11b0 <TA_InvokeCommandEntryPoint+0xa64>
+     e4c:	e59f0360 	ldr	r0, [pc, #864]	@ 11b4 <TA_InvokeCommandEntryPoint+0xa68>
+     e50:	e59f1360 	ldr	r1, [pc, #864]	@ 11b8 <TA_InvokeCommandEntryPoint+0xa6c>
+     e54:	e08f2002 	add	r2, pc, r2
+     e58:	e08f0000 	add	r0, pc, r0
+     e5c:	e2822044 	add	r2, r2, #68	@ 0x44
+     e60:	e08f1001 	add	r1, pc, r1
+     e64:	e1a03007 	mov	r3, r7
+     e68:	ebfffffe 	bl	0 <uart_printf_func>
+     e6c:	eaffffd8 	b	dd4 <TA_InvokeCommandEntryPoint+0x688>
+     e70:	e1a01009 	mov	r1, r9
+     e74:	e51b00dc 	ldr	r0, [fp, #-220]	@ 0xffffff24
+     e78:	e51b20e0 	ldr	r2, [fp, #-224]	@ 0xffffff20
+     e7c:	e50bc0e8 	str	ip, [fp, #-232]	@ 0xffffff18
+     e80:	ebfffffe 	bl	0 <TEE_MemMove>
+     e84:	e51bc0e8 	ldr	ip, [fp, #-232]	@ 0xffffff18
+     e88:	eaffff9e 	b	d08 <TA_InvokeCommandEntryPoint+0x5bc>
+     e8c:	ebfffffe 	bl	0 <__stack_chk_fail>
+     e90:	e51b00d4 	ldr	r0, [fp, #-212]	@ 0xffffff2c
+     e94:	ebfffffe 	bl	0 <TEE_FreeOperation>
+     e98:	e51b20d8 	ldr	r2, [fp, #-216]	@ 0xffffff28
+     e9c:	e28ac01f 	add	ip, sl, #31
+     ea0:	e0887002 	add	r7, r8, r2
+     ea4:	e1a03007 	mov	r3, r7
+     ea8:	e24b10cd 	sub	r1, fp, #205	@ 0xcd
+     eac:	e5f10001 	ldrb	r0, [r1, #1]!
+     eb0:	e1a02220 	lsr	r2, r0, #4
+     eb4:	e3520009 	cmp	r2, #9
+     eb8:	92822030 	addls	r2, r2, #48	@ 0x30
+     ebc:	9a000004 	bls	ed4 <TA_InvokeCommandEntryPoint+0x788>
+     ec0:	e242e00a 	sub	lr, r2, #10
+     ec4:	e20ee0ff 	and	lr, lr, #255	@ 0xff
+     ec8:	e35e0005 	cmp	lr, #5
+     ecc:	8a000080 	bhi	10d4 <TA_InvokeCommandEntryPoint+0x988>
+     ed0:	e2822037 	add	r2, r2, #55	@ 0x37
+     ed4:	e200000f 	and	r0, r0, #15
+     ed8:	e3500009 	cmp	r0, #9
+     edc:	92800030 	addls	r0, r0, #48	@ 0x30
+     ee0:	82800037 	addhi	r0, r0, #55	@ 0x37
+     ee4:	e151000c 	cmp	r1, ip
+     ee8:	e5c32000 	strb	r2, [r3]
+     eec:	e5c30001 	strb	r0, [r3, #1]
+     ef0:	e2833002 	add	r3, r3, #2
+     ef4:	1affffec 	bne	eac <TA_InvokeCommandEntryPoint+0x760>
+     ef8:	e3a0a000 	mov	sl, #0
+     efc:	e51b20d8 	ldr	r2, [fp, #-216]	@ 0xffffff28
+     f00:	e51b10dc 	ldr	r1, [fp, #-220]	@ 0xffffff24
+     f04:	e1a00008 	mov	r0, r8
+     f08:	e5c7a040 	strb	sl, [r7, #64]	@ 0x40
+     f0c:	ebfffffe 	bl	0 <TEE_MemMove>
+     f10:	e51b00dc 	ldr	r0, [fp, #-220]	@ 0xffffff24
+     f14:	ebfffffe 	bl	0 <TEE_Free>
+     f18:	e1a00008 	mov	r0, r8
+     f1c:	ebfffffe 	bl	0 <strlen>
+     f20:	e5967008 	ldr	r7, [r6, #8]
+     f24:	e2171b01 	ands	r1, r7, #1024	@ 0x400
+     f28:	e3c73201 	bic	r3, r7, #268435456	@ 0x10000000
+     f2c:	e1a02000 	mov	r2, r0
+     f30:	1a00003a 	bne	1020 <TA_InvokeCommandEntryPoint+0x8d4>
+     f34:	e3170c02 	tst	r7, #512	@ 0x200
+     f38:	0a000032 	beq	1008 <TA_InvokeCommandEntryPoint+0x8bc>
+     f3c:	e3c33c02 	bic	r3, r3, #512	@ 0x200
+     f40:	e58d1000 	str	r1, [sp]
+     f44:	e58d1004 	str	r1, [sp, #4]
+     f48:	e58d1008 	str	r1, [sp, #8]
+     f4c:	e58d900c 	str	r9, [sp, #12]
+     f50:	e1a01008 	mov	r1, r8
+     f54:	e3a00001 	mov	r0, #1
+     f58:	ebfffffe 	bl	0 <TEE_CreatePersistentObject>
+     f5c:	e1a07000 	mov	r7, r0
+     f60:	e3570000 	cmp	r7, #0
+     f64:	1afffe1b 	bne	7d8 <TA_InvokeCommandEntryPoint+0x8c>
+     f68:	e59f324c 	ldr	r3, [pc, #588]	@ 11bc <TA_InvokeCommandEntryPoint+0xa70>
+     f6c:	e3a0000c 	mov	r0, #12
+     f70:	e08f3003 	add	r3, pc, r3
+     f74:	e5d32008 	ldrb	r2, [r3, #8]
+     f78:	e3a01000 	mov	r1, #0
+     f7c:	e3520000 	cmp	r2, #0
+     f80:	03a02001 	moveq	r2, #1
+     f84:	05833000 	streq	r3, [r3]
+     f88:	05833004 	streq	r3, [r3, #4]
+     f8c:	05c32008 	strbeq	r2, [r3, #8]
+     f90:	ebfffffe 	bl	0 <TEE_Malloc>
+     f94:	e2508000 	subs	r8, r0, #0
+     f98:	0a000038 	beq	1080 <TA_InvokeCommandEntryPoint+0x934>
+     f9c:	e59f121c 	ldr	r1, [pc, #540]	@ 11c0 <TA_InvokeCommandEntryPoint+0xa74>
+     fa0:	e51b00d0 	ldr	r0, [fp, #-208]	@ 0xffffff30
+     fa4:	e08f1001 	add	r1, pc, r1
+     fa8:	e5913004 	ldr	r3, [r1, #4]
+     fac:	e1a09008 	mov	r9, r8
+     fb0:	e1510003 	cmp	r1, r3
+     fb4:	e4890004 	str	r0, [r9], #4
+     fb8:	e243200c 	sub	r2, r3, #12
+     fbc:	e5889004 	str	r9, [r8, #4]
+     fc0:	e5889008 	str	r9, [r8, #8]
+     fc4:	1a000004 	bne	fdc <TA_InvokeCommandEntryPoint+0x890>
+     fc8:	ea000018 	b	1030 <TA_InvokeCommandEntryPoint+0x8e4>
+     fcc:	e5923010 	ldr	r3, [r2, #16]
+     fd0:	e1510003 	cmp	r1, r3
+     fd4:	e243200c 	sub	r2, r3, #12
+     fd8:	0a000014 	beq	1030 <TA_InvokeCommandEntryPoint+0x8e4>
+     fdc:	e513300c 	ldr	r3, [r3, #-12]
+     fe0:	e1540003 	cmp	r4, r3
+     fe4:	1afffff8 	bne	fcc <TA_InvokeCommandEntryPoint+0x880>
+     fe8:	e5923008 	ldr	r3, [r2, #8]
+     fec:	e2821004 	add	r1, r2, #4
+     ff0:	e5900000 	ldr	r0, [r0]
+     ff4:	e988000a 	stmib	r8, {r1, r3}
+     ff8:	e5839000 	str	r9, [r3]
+     ffc:	e5829008 	str	r9, [r2, #8]
+    1000:	e5860010 	str	r0, [r6, #16]
+    1004:	eafffdf3 	b	7d8 <TA_InvokeCommandEntryPoint+0x8c>
+    1008:	e58d9000 	str	r9, [sp]
+    100c:	e1a01008 	mov	r1, r8
+    1010:	e3a00001 	mov	r0, #1
+    1014:	ebfffffe 	bl	0 <TEE_OpenPersistentObject>
+    1018:	e1a07000 	mov	r7, r0
+    101c:	eaffffcf 	b	f60 <TA_InvokeCommandEntryPoint+0x814>
+    1020:	e58da000 	str	sl, [sp]
+    1024:	e58da004 	str	sl, [sp, #4]
+    1028:	e58da008 	str	sl, [sp, #8]
+    102c:	eaffffc6 	b	f4c <TA_InvokeCommandEntryPoint+0x800>
+    1030:	e3a00014 	mov	r0, #20
+    1034:	e3a01000 	mov	r1, #0
+    1038:	ebfffffe 	bl	0 <TEE_Malloc>
+    103c:	e2502000 	subs	r2, r0, #0
+    1040:	0a000018 	beq	10a8 <TA_InvokeCommandEntryPoint+0x95c>
+    1044:	e59fa178 	ldr	sl, [pc, #376]	@ 11c4 <TA_InvokeCommandEntryPoint+0xa78>
+    1048:	e1a0c002 	mov	ip, r2
+    104c:	e08fa00a 	add	sl, pc, sl
+    1050:	e59a3004 	ldr	r3, [sl, #4]
+    1054:	e2821004 	add	r1, r2, #4
+    1058:	e48c400c 	str	r4, [ip], #12
+    105c:	e5823010 	str	r3, [r2, #16]
+    1060:	e5821004 	str	r1, [r2, #4]
+    1064:	e582a00c 	str	sl, [r2, #12]
+    1068:	e5821008 	str	r1, [r2, #8]
+    106c:	e583c000 	str	ip, [r3]
+    1070:	e51b00d0 	ldr	r0, [fp, #-208]	@ 0xffffff30
+    1074:	e1a03001 	mov	r3, r1
+    1078:	e58ac004 	str	ip, [sl, #4]
+    107c:	eaffffdb 	b	ff0 <TA_InvokeCommandEntryPoint+0x8a4>
+    1080:	e59f2140 	ldr	r2, [pc, #320]	@ 11c8 <TA_InvokeCommandEntryPoint+0xa7c>
+    1084:	e59f0140 	ldr	r0, [pc, #320]	@ 11cc <TA_InvokeCommandEntryPoint+0xa80>
+    1088:	e59f1140 	ldr	r1, [pc, #320]	@ 11d0 <TA_InvokeCommandEntryPoint+0xa84>
+    108c:	e08f2002 	add	r2, pc, r2
+    1090:	e08f0000 	add	r0, pc, r0
+    1094:	e282206c 	add	r2, r2, #108	@ 0x6c
+    1098:	e08f1001 	add	r1, pc, r1
+    109c:	ebfffffe 	bl	0 <uart_printf_func>
+    10a0:	e59f70d4 	ldr	r7, [pc, #212]	@ 117c <TA_InvokeCommandEntryPoint+0xa30>
+    10a4:	eafffdcb 	b	7d8 <TA_InvokeCommandEntryPoint+0x8c>
+    10a8:	e59f2124 	ldr	r2, [pc, #292]	@ 11d4 <TA_InvokeCommandEntryPoint+0xa88>
+    10ac:	e59f0124 	ldr	r0, [pc, #292]	@ 11d8 <TA_InvokeCommandEntryPoint+0xa8c>
+    10b0:	e59f1124 	ldr	r1, [pc, #292]	@ 11dc <TA_InvokeCommandEntryPoint+0xa90>
+    10b4:	e08f2002 	add	r2, pc, r2
+    10b8:	e08f0000 	add	r0, pc, r0
+    10bc:	e282206c 	add	r2, r2, #108	@ 0x6c
+    10c0:	e08f1001 	add	r1, pc, r1
+    10c4:	ebfffffe 	bl	0 <uart_printf_func>
+    10c8:	e1a00008 	mov	r0, r8
+    10cc:	ebfffffe 	bl	0 <TEE_Free>
+    10d0:	eafffff2 	b	10a0 <TA_InvokeCommandEntryPoint+0x954>
+    10d4:	e1a00008 	mov	r0, r8
+    10d8:	e51b20d8 	ldr	r2, [fp, #-216]	@ 0xffffff28
+    10dc:	e51b10dc 	ldr	r1, [fp, #-220]	@ 0xffffff24
+    10e0:	ebfffffe 	bl	0 <TEE_MemMove>
+    10e4:	e51b00dc 	ldr	r0, [fp, #-220]	@ 0xffffff24
+    10e8:	ebfffffe 	bl	0 <TEE_Free>
+    10ec:	e59f702c 	ldr	r7, [pc, #44]	@ 1120 <TA_InvokeCommandEntryPoint+0x9d4>
+    10f0:	eafffdf0 	b	8b8 <TA_InvokeCommandEntryPoint+0x16c>
+    10f4:	0000098c 	andeq	r0, r0, ip, lsl #19
+    10f8:	00000000 	andeq	r0, r0, r0
+    10fc:	00000860 	andeq	r0, r0, r0, ror #16
+    1100:	00000858 	andeq	r0, r0, r8, asr r8
+    1104:	00000858 	andeq	r0, r0, r8, asr r8
+    1108:	ffff0006 			@ <UNDEFINED> instruction: 0xffff0006
+    110c:	00000840 	andeq	r0, r0, r0, asr #16
+    1110:	00000840 	andeq	r0, r0, r0, asr #16
+    1114:	0000083c 	andeq	r0, r0, ip, lsr r8
+    1118:	00000800 	andeq	r0, r0, r0, lsl #16
+    111c:	000007ec 	andeq	r0, r0, ip, ror #15
+    1120:	ffff0000 			@ <UNDEFINED> instruction: 0xffff0000
+    1124:	000005f4 	strdeq	r0, [r0], -r4
+    1128:	000005b0 			@ <UNDEFINED> instruction: 0x000005b0
+    112c:	000005ac 	andeq	r0, r0, ip, lsr #11
+    1130:	000005ac 	andeq	r0, r0, ip, lsr #11
+    1134:	0000058c 	andeq	r0, r0, ip, lsl #11
+    1138:	0000058c 	andeq	r0, r0, ip, lsl #11
+    113c:	00000588 	andeq	r0, r0, r8, lsl #11
+    1140:	00000570 	andeq	r0, r0, r0, ror r5
+    1144:	00000570 	andeq	r0, r0, r0, ror r5
+    1148:	0000056c 	andeq	r0, r0, ip, ror #10
+    114c:	00000554 	andeq	r0, r0, r4, asr r5
+    1150:	00000554 	andeq	r0, r0, r4, asr r5
+    1154:	00000550 	andeq	r0, r0, r0, asr r5
+    1158:	00000538 	andeq	r0, r0, r8, lsr r5
+    115c:	00000538 	andeq	r0, r0, r8, lsr r5
+    1160:	00000534 	andeq	r0, r0, r4, lsr r5
+    1164:	0000051c 	andeq	r0, r0, ip, lsl r5
+    1168:	0000051c 	andeq	r0, r0, ip, lsl r5
+    116c:	00000518 	andeq	r0, r0, r8, lsl r5
+    1170:	00000500 	andeq	r0, r0, r0, lsl #10
+    1174:	00000500 	andeq	r0, r0, r0, lsl #10
+    1178:	000004fc 	strdeq	r0, [r0], -ip
+    117c:	ffff000c 			@ <UNDEFINED> instruction: 0xffff000c
+    1180:	000004e0 	andeq	r0, r0, r0, ror #9
+    1184:	000004e0 	andeq	r0, r0, r0, ror #9
+    1188:	000004dc 	ldrdeq	r0, [r0], -ip
+    118c:	0000042c 	andeq	r0, r0, ip, lsr #8
+    1190:	0000042c 	andeq	r0, r0, ip, lsr #8
+    1194:	00000428 	andeq	r0, r0, r8, lsr #8
+    1198:	000003d4 	ldrdeq	r0, [r0], -r4
+    119c:	000003d4 	ldrdeq	r0, [r0], -r4
+    11a0:	000003d0 	ldrdeq	r0, [r0], -r0	@ <UNPREDICTABLE>
+    11a4:	0000039c 	muleq	r0, ip, r3
+    11a8:	00000394 	muleq	r0, r4, r3
+    11ac:	0000039c 	muleq	r0, ip, r3
+    11b0:	00000354 	andeq	r0, r0, r4, asr r3
+    11b4:	00000354 	andeq	r0, r0, r4, asr r3
+    11b8:	00000350 	andeq	r0, r0, r0, asr r3
+    11bc:	00000244 	andeq	r0, r0, r4, asr #4
+    11c0:	00000214 	andeq	r0, r0, r4, lsl r2
+    11c4:	00000170 	andeq	r0, r0, r0, ror r1
+    11c8:	00000134 	andeq	r0, r0, r4, lsr r1
+    11cc:	00000134 	andeq	r0, r0, r4, lsr r1
+    11d0:	00000130 	andeq	r0, r0, r0, lsr r1
+    11d4:	00000118 	andeq	r0, r0, r8, lsl r1
+    11d8:	00000118 	andeq	r0, r0, r8, lsl r1
+    11dc:	00000114 	andeq	r0, r0, r4, lsl r1
+
+000011e0 <TA_CreateEntryPoint>:
+    11e0:	e59f303c 	ldr	r3, [pc, #60]	@ 1224 <TA_CreateEntryPoint+0x44>
+    11e4:	e92d4800 	push	{fp, lr}
+    11e8:	e59f2038 	ldr	r2, [pc, #56]	@ 1228 <TA_CreateEntryPoint+0x48>
+    11ec:	e28db004 	add	fp, sp, #4
+    11f0:	e24dd008 	sub	sp, sp, #8
+    11f4:	e08f3003 	add	r3, pc, r3
+    11f8:	e7933002 	ldr	r3, [r3, r2]
+    11fc:	e3a00000 	mov	r0, #0
+    1200:	e5932000 	ldr	r2, [r3]
+    1204:	e50b2008 	str	r2, [fp, #-8]
+    1208:	e51b2008 	ldr	r2, [fp, #-8]
+    120c:	e5933000 	ldr	r3, [r3]
+    1210:	e1520003 	cmp	r2, r3
+    1214:	1a000001 	bne	1220 <TA_CreateEntryPoint+0x40>
+    1218:	e24bd004 	sub	sp, fp, #4
+    121c:	e8bd8800 	pop	{fp, pc}
+    1220:	ebfffffe 	bl	0 <__stack_chk_fail>
+    1224:	00000028 	andeq	r0, r0, r8, lsr #32
+    1228:	00000000 	andeq	r0, r0, r0
+
+0000122c <TA_DestroyEntryPoint>:
+    122c:	e59f3038 	ldr	r3, [pc, #56]	@ 126c <TA_DestroyEntryPoint+0x40>
+    1230:	e92d4800 	push	{fp, lr}
+    1234:	e59f2034 	ldr	r2, [pc, #52]	@ 1270 <TA_DestroyEntryPoint+0x44>
+    1238:	e28db004 	add	fp, sp, #4
+    123c:	e24dd008 	sub	sp, sp, #8
+    1240:	e08f3003 	add	r3, pc, r3
+    1244:	e7933002 	ldr	r3, [r3, r2]
+    1248:	e5932000 	ldr	r2, [r3]
+    124c:	e50b2008 	str	r2, [fp, #-8]
+    1250:	e51b2008 	ldr	r2, [fp, #-8]
+    1254:	e5933000 	ldr	r3, [r3]
+    1258:	e1520003 	cmp	r2, r3
+    125c:	1a000001 	bne	1268 <TA_DestroyEntryPoint+0x3c>
+    1260:	e24bd004 	sub	sp, fp, #4
+    1264:	e8bd8800 	pop	{fp, pc}
+    1268:	ebfffffe 	bl	0 <__stack_chk_fail>
+    126c:	00000024 	andeq	r0, r0, r4, lsr #32
+    1270:	00000000 	andeq	r0, r0, r0
+    1274:	e59f303c 	ldr	r3, [pc, #60]	@ 12b8 <TA_DestroyEntryPoint+0x8c>
+    1278:	e92d4800 	push	{fp, lr}
+    127c:	e59f2038 	ldr	r2, [pc, #56]	@ 12bc <TA_DestroyEntryPoint+0x90>
+    1280:	e28db004 	add	fp, sp, #4
+    1284:	e24dd008 	sub	sp, sp, #8
+    1288:	e08f3003 	add	r3, pc, r3
+    128c:	e7933002 	ldr	r3, [r3, r2]
+    1290:	e3a00000 	mov	r0, #0
+    1294:	e5932000 	ldr	r2, [r3]
+    1298:	e50b2008 	str	r2, [fp, #-8]
+    129c:	e51b2008 	ldr	r2, [fp, #-8]
+    12a0:	e5933000 	ldr	r3, [r3]
+    12a4:	e1520003 	cmp	r2, r3
+    12a8:	1a000001 	bne	12b4 <TA_DestroyEntryPoint+0x88>
+    12ac:	e24bd004 	sub	sp, fp, #4
+    12b0:	e8bd8800 	pop	{fp, pc}
+    12b4:	ebfffffe 	bl	0 <__stack_chk_fail>
+    12b8:	00000028 	andeq	r0, r0, r8, lsr #32
+    12bc:	00000000 	andeq	r0, r0, r0
+    12c0:	e59f303c 	ldr	r3, [pc, #60]	@ 1304 <TA_DestroyEntryPoint+0xd8>
+    12c4:	e92d4800 	push	{fp, lr}
+    12c8:	e59f2038 	ldr	r2, [pc, #56]	@ 1308 <TA_DestroyEntryPoint+0xdc>
+    12cc:	e28db004 	add	fp, sp, #4
+    12d0:	e24dd008 	sub	sp, sp, #8
+    12d4:	e08f3003 	add	r3, pc, r3
+    12d8:	e7933002 	ldr	r3, [r3, r2]
+    12dc:	e3a00000 	mov	r0, #0
+    12e0:	e5932000 	ldr	r2, [r3]
+    12e4:	e50b2008 	str	r2, [fp, #-8]
+    12e8:	e51b2008 	ldr	r2, [fp, #-8]
+    12ec:	e5933000 	ldr	r3, [r3]
+    12f0:	e1520003 	cmp	r2, r3
+    12f4:	1a000001 	bne	1300 <TA_DestroyEntryPoint+0xd4>
+    12f8:	e24bd004 	sub	sp, fp, #4
+    12fc:	e8bd8800 	pop	{fp, pc}
+    1300:	ebfffffe 	bl	0 <__stack_chk_fail>
+    1304:	00000028 	andeq	r0, r0, r8, lsr #32
+    1308:	00000000 	andeq	r0, r0, r0
+    130c:	e59f303c 	ldr	r3, [pc, #60]	@ 1350 <TA_DestroyEntryPoint+0x124>
+    1310:	e92d4800 	push	{fp, lr}
+    1314:	e59f2038 	ldr	r2, [pc, #56]	@ 1354 <TA_DestroyEntryPoint+0x128>
+    1318:	e28db004 	add	fp, sp, #4
+    131c:	e24dd008 	sub	sp, sp, #8
+    1320:	e08f3003 	add	r3, pc, r3
+    1324:	e7933002 	ldr	r3, [r3, r2]
+    1328:	e3a00000 	mov	r0, #0
+    132c:	e5932000 	ldr	r2, [r3]
+    1330:	e50b2008 	str	r2, [fp, #-8]
+    1334:	e51b2008 	ldr	r2, [fp, #-8]
+    1338:	e5933000 	ldr	r3, [r3]
+    133c:	e1520003 	cmp	r2, r3
+    1340:	1a000001 	bne	134c <TA_DestroyEntryPoint+0x120>
+    1344:	e24bd004 	sub	sp, fp, #4
+    1348:	e8bd8800 	pop	{fp, pc}
+    134c:	ebfffffe 	bl	0 <__stack_chk_fail>
+    1350:	00000028 	andeq	r0, r0, r8, lsr #32
+    1354:	00000000 	andeq	r0, r0, r0
+    1358:	e59f3038 	ldr	r3, [pc, #56]	@ 1398 <TA_DestroyEntryPoint+0x16c>
+    135c:	e92d4800 	push	{fp, lr}
+    1360:	e59f2034 	ldr	r2, [pc, #52]	@ 139c <TA_DestroyEntryPoint+0x170>
+    1364:	e28db004 	add	fp, sp, #4
+    1368:	e24dd008 	sub	sp, sp, #8
+    136c:	e08f3003 	add	r3, pc, r3
+    1370:	e7933002 	ldr	r3, [r3, r2]
+    1374:	e5932000 	ldr	r2, [r3]
+    1378:	e50b2008 	str	r2, [fp, #-8]
+    137c:	e51b2008 	ldr	r2, [fp, #-8]
+    1380:	e5933000 	ldr	r3, [r3]
+    1384:	e1520003 	cmp	r2, r3
+    1388:	1a000001 	bne	1394 <TA_DestroyEntryPoint+0x168>
+    138c:	e24bd004 	sub	sp, fp, #4
+    1390:	e8bd8800 	pop	{fp, pc}
+    1394:	ebfffffe 	bl	0 <__stack_chk_fail>
+    1398:	00000024 	andeq	r0, r0, r4, lsr #32
+    139c:	00000000 	andeq	r0, r0, r0
+    13a0:	e59f3038 	ldr	r3, [pc, #56]	@ 13e0 <TA_DestroyEntryPoint+0x1b4>
+    13a4:	e92d4800 	push	{fp, lr}
+    13a8:	e59f2034 	ldr	r2, [pc, #52]	@ 13e4 <TA_DestroyEntryPoint+0x1b8>
+    13ac:	e28db004 	add	fp, sp, #4
+    13b0:	e24dd008 	sub	sp, sp, #8
+    13b4:	e08f3003 	add	r3, pc, r3
+    13b8:	e7933002 	ldr	r3, [r3, r2]
+    13bc:	e5932000 	ldr	r2, [r3]
+    13c0:	e50b2008 	str	r2, [fp, #-8]
+    13c4:	e51b2008 	ldr	r2, [fp, #-8]
+    13c8:	e5933000 	ldr	r3, [r3]
+    13cc:	e1520003 	cmp	r2, r3
+    13d0:	1a000001 	bne	13dc <TA_DestroyEntryPoint+0x1b0>
+    13d4:	e24bd004 	sub	sp, fp, #4
+    13d8:	e8bd8800 	pop	{fp, pc}
+    13dc:	ebfffffe 	bl	0 <__stack_chk_fail>
+    13e0:	00000024 	andeq	r0, r0, r4, lsr #32
+    13e4:	00000000 	andeq	r0, r0, r0
+
+000013e8 <tee_task_entry>:
+    13e8:	e92d4ff0 	push	{r4, r5, r6, r7, r8, r9, sl, fp, lr}
+    13ec:	e59f53ec 	ldr	r5, [pc, #1004]	@ 17e0 <tee_task_entry+0x3f8>
+    13f0:	e28db020 	add	fp, sp, #32
+    13f4:	e59f33e8 	ldr	r3, [pc, #1000]	@ 17e4 <tee_task_entry+0x3fc>
+    13f8:	e24dd0c4 	sub	sp, sp, #196	@ 0xc4
+    13fc:	e24b106c 	sub	r1, fp, #108	@ 0x6c
+    1400:	e08f5005 	add	r5, pc, r5
+    1404:	e50b10c8 	str	r1, [fp, #-200]	@ 0xffffff38
+    1408:	e7953003 	ldr	r3, [r5, r3]
+    140c:	e3a02040 	mov	r2, #64	@ 0x40
+    1410:	e50b00b8 	str	r0, [fp, #-184]	@ 0xffffff48
+    1414:	e5933000 	ldr	r3, [r3]
+    1418:	e1a00001 	mov	r0, r1
+    141c:	e3a01000 	mov	r1, #0
+    1420:	e1a04001 	mov	r4, r1
+    1424:	e50b3028 	str	r3, [fp, #-40]	@ 0xffffffd8
+    1428:	ebfffffe 	bl	0 <memset>
+    142c:	e51b20b8 	ldr	r2, [fp, #-184]	@ 0xffffff48
+    1430:	e50b408c 	str	r4, [fp, #-140]	@ 0xffffff74
+    1434:	e1520004 	cmp	r2, r4
+    1438:	e50b4088 	str	r4, [fp, #-136]	@ 0xffffff78
+    143c:	e50b4084 	str	r4, [fp, #-132]	@ 0xffffff7c
+    1440:	e50b4080 	str	r4, [fp, #-128]	@ 0xffffff80
+    1444:	e50b407c 	str	r4, [fp, #-124]	@ 0xffffff84
+    1448:	e50b4078 	str	r4, [fp, #-120]	@ 0xffffff88
+    144c:	e50b4074 	str	r4, [fp, #-116]	@ 0xffffff8c
+    1450:	e50b4070 	str	r4, [fp, #-112]	@ 0xffffff90
+    1454:	0a000096 	beq	16b4 <tee_task_entry+0x2cc>
+    1458:	e59f1388 	ldr	r1, [pc, #904]	@ 17e8 <tee_task_entry+0x400>
+    145c:	e24b20ac 	sub	r2, fp, #172	@ 0xac
+    1460:	e08f1001 	add	r1, pc, r1
+    1464:	e1a00004 	mov	r0, r4
+    1468:	ebfffffe 	bl	0 <__SRE_HuntByName>
+    146c:	e51b00ac 	ldr	r0, [fp, #-172]	@ 0xffffff54
+    1470:	e50b40d8 	str	r4, [fp, #-216]	@ 0xffffff28
+    1474:	ebfffffe 	bl	0 <set_global_handle>
+    1478:	e24b909c 	sub	r9, fp, #156	@ 0x9c
+    147c:	e24b80b0 	sub	r8, fp, #176	@ 0xb0
+    1480:	e59f1364 	ldr	r1, [pc, #868]	@ 17ec <tee_task_entry+0x404>
+    1484:	e59f2364 	ldr	r2, [pc, #868]	@ 17f0 <tee_task_entry+0x408>
+    1488:	e08f1001 	add	r1, pc, r1
+    148c:	e59f3360 	ldr	r3, [pc, #864]	@ 17f4 <tee_task_entry+0x40c>
+    1490:	e50b10cc 	str	r1, [fp, #-204]	@ 0xffffff34
+    1494:	e59f135c 	ldr	r1, [pc, #860]	@ 17f8 <tee_task_entry+0x410>
+    1498:	e3a05000 	mov	r5, #0
+    149c:	e08f2002 	add	r2, pc, r2
+    14a0:	e08f3003 	add	r3, pc, r3
+    14a4:	e08f1001 	add	r1, pc, r1
+    14a8:	e2822010 	add	r2, r2, #16
+    14ac:	e2833010 	add	r3, r3, #16
+    14b0:	e1a06005 	mov	r6, r5
+    14b4:	e1a07005 	mov	r7, r5
+    14b8:	e24ba08c 	sub	sl, fp, #140	@ 0x8c
+    14bc:	e50b10d0 	str	r1, [fp, #-208]	@ 0xffffff30
+    14c0:	e50b20d4 	str	r2, [fp, #-212]	@ 0xffffff2c
+    14c4:	e50b30bc 	str	r3, [fp, #-188]	@ 0xffffff44
+    14c8:	e1a0200a 	mov	r2, sl
+    14cc:	e3a03020 	mov	r3, #32
+    14d0:	e3a04000 	mov	r4, #0
+    14d4:	e3e00000 	mvn	r0, #0
+    14d8:	e1a01008 	mov	r1, r8
+    14dc:	e50b40b4 	str	r4, [fp, #-180]	@ 0xffffff4c
+    14e0:	ebfffffe 	bl	0 <__SRE_MsgRcv>
+    14e4:	e51b30b0 	ldr	r3, [fp, #-176]	@ 0xffffff50
+    14e8:	e2432015 	sub	r2, r3, #21
+    14ec:	e3520001 	cmp	r2, #1
+    14f0:	9a000057 	bls	1654 <tee_task_entry+0x26c>
+    14f4:	e2433012 	sub	r3, r3, #18
+    14f8:	e3530001 	cmp	r3, #1
+    14fc:	951b3078 	ldrls	r3, [fp, #-120]	@ 0xffffff88
+    1500:	e51b008c 	ldr	r0, [fp, #-140]	@ 0xffffff74
+    1504:	e51b1074 	ldr	r1, [fp, #-116]	@ 0xffffff8c
+    1508:	950b30b4 	strls	r3, [fp, #-180]	@ 0xffffff4c
+    150c:	e51b7084 	ldr	r7, [fp, #-132]	@ 0xffffff7c
+    1510:	e51b6080 	ldr	r6, [fp, #-128]	@ 0xffffff80
+    1514:	e51b507c 	ldr	r5, [fp, #-124]	@ 0xffffff84
+    1518:	ebfffffe 	bl	0 <tee_init_context>
+    151c:	e51b0088 	ldr	r0, [fp, #-136]	@ 0xffffff78
+    1520:	ebfffffe 	bl	0 <set_current_session_type>
+    1524:	e3a04000 	mov	r4, #0
+    1528:	e51b00b0 	ldr	r0, [fp, #-176]	@ 0xffffff50
+    152c:	e2403011 	sub	r3, r0, #17
+    1530:	e3530005 	cmp	r3, #5
+    1534:	908ff103 	addls	pc, pc, r3, lsl #2
+    1538:	ea00003b 	b	162c <tee_task_entry+0x244>
+    153c:	ea00001f 	b	15c0 <tee_task_entry+0x1d8>
+    1540:	ea000016 	b	15a0 <tee_task_entry+0x1b8>
+    1544:	ea000002 	b	1554 <tee_task_entry+0x16c>
+    1548:	ea000037 	b	162c <tee_task_entry+0x244>
+    154c:	ea000034 	b	1624 <tee_task_entry+0x23c>
+    1550:	ea000033 	b	1624 <tee_task_entry+0x23c>
+    1554:	e51b00b4 	ldr	r0, [fp, #-180]	@ 0xffffff4c
+    1558:	ebfffffe 	bl	700 <TA_CloseSessionEntryPoint>
+    155c:	e55b306f 	ldrb	r3, [fp, #-111]	@ 0xffffff91
+    1560:	e3530000 	cmp	r3, #0
+    1564:	1a00004a 	bne	1694 <tee_task_entry+0x2ac>
+    1568:	e51b008c 	ldr	r0, [fp, #-140]	@ 0xffffff74
+    156c:	ebfffffe 	bl	0 <tee_session_exit>
+    1570:	e51b00b0 	ldr	r0, [fp, #-176]	@ 0xffffff50
+    1574:	e3540000 	cmp	r4, #0
+    1578:	e50b409c 	str	r4, [fp, #-156]	@ 0xffffff64
+    157c:	1a000002 	bne	158c <tee_task_entry+0x1a4>
+    1580:	e3500011 	cmp	r0, #17
+    1584:	051b30b4 	ldreq	r3, [fp, #-180]	@ 0xffffff4c
+    1588:	050b3094 	streq	r3, [fp, #-148]	@ 0xffffff6c
+    158c:	e51b10ac 	ldr	r1, [fp, #-172]	@ 0xffffff54
+    1590:	e1a02009 	mov	r2, r9
+    1594:	e3a03010 	mov	r3, #16
+    1598:	ebfffffe 	bl	0 <__SRE_MsgSnd>
+    159c:	eaffffc9 	b	14c8 <tee_task_entry+0xe0>
+    15a0:	e51b00b4 	ldr	r0, [fp, #-180]	@ 0xffffff4c
+    15a4:	e1a01007 	mov	r1, r7
+    15a8:	e1a02006 	mov	r2, r6
+    15ac:	e1a03005 	mov	r3, r5
+    15b0:	ebfffffe 	bl	74c <TA_InvokeCommandEntryPoint>
+    15b4:	e1a04000 	mov	r4, r0
+    15b8:	e51b00b0 	ldr	r0, [fp, #-176]	@ 0xffffff50
+    15bc:	eaffffec 	b	1574 <tee_task_entry+0x18c>
+    15c0:	e51b10b8 	ldr	r1, [fp, #-184]	@ 0xffffff48
+    15c4:	e3510000 	cmp	r1, #0
+    15c8:	1a000006 	bne	15e8 <tee_task_entry+0x200>
+    15cc:	e24b006c 	sub	r0, fp, #108	@ 0x6c
+    15d0:	ebfffffe 	bl	0 <tee_init>
+    15d4:	e3500000 	cmp	r0, #0
+    15d8:	1a00001a 	bne	1648 <tee_task_entry+0x260>
+    15dc:	e51b1044 	ldr	r1, [fp, #-68]	@ 0xffffffbc
+    15e0:	e3510000 	cmp	r1, #0
+    15e4:	1a00002d 	bne	16a0 <tee_task_entry+0x2b8>
+    15e8:	e51b008c 	ldr	r0, [fp, #-140]	@ 0xffffff74
+    15ec:	ebfffffe 	bl	0 <tee_session_init>
+    15f0:	e55b3070 	ldrb	r3, [fp, #-112]	@ 0xffffff90
+    15f4:	e3530000 	cmp	r3, #0
+    15f8:	0a000002 	beq	1608 <tee_task_entry+0x220>
+    15fc:	ebfffffe 	bl	11e0 <TA_CreateEntryPoint>
+    1600:	e3500000 	cmp	r0, #0
+    1604:	1a00000f 	bne	1648 <tee_task_entry+0x260>
+    1608:	e1a00006 	mov	r0, r6
+    160c:	e1a01005 	mov	r1, r5
+    1610:	e24b20b4 	sub	r2, fp, #180	@ 0xb4
+    1614:	ebfffffe 	bl	37c <TA_OpenSessionEntryPoint>
+    1618:	e1a04000 	mov	r4, r0
+    161c:	e51b00b0 	ldr	r0, [fp, #-176]	@ 0xffffff50
+    1620:	eaffffd3 	b	1574 <tee_task_entry+0x18c>
+    1624:	e50b409c 	str	r4, [fp, #-156]	@ 0xffffff64
+    1628:	eaffffd7 	b	158c <tee_task_entry+0x1a4>
+    162c:	e59f01c8 	ldr	r0, [pc, #456]	@ 17fc <tee_task_entry+0x414>
+    1630:	e59f11c8 	ldr	r1, [pc, #456]	@ 1800 <tee_task_entry+0x418>
+    1634:	e08f0000 	add	r0, pc, r0
+    1638:	e08f1001 	add	r1, pc, r1
+    163c:	e51b20bc 	ldr	r2, [fp, #-188]	@ 0xffffff44
+    1640:	ebfffffe 	bl	0 <uart_printf_func>
+    1644:	e59f01b8 	ldr	r0, [pc, #440]	@ 1804 <tee_task_entry+0x41c>
+    1648:	e50b009c 	str	r0, [fp, #-156]	@ 0xffffff64
+    164c:	e51b00b0 	ldr	r0, [fp, #-176]	@ 0xffffff50
+    1650:	eaffffcd 	b	158c <tee_task_entry+0x1a4>
+    1654:	e51b308c 	ldr	r3, [fp, #-140]	@ 0xffffff74
+    1658:	e55b2084 	ldrb	r2, [fp, #-132]	@ 0xffffff7c
+    165c:	e50b30a8 	str	r3, [fp, #-168]	@ 0xffffff58
+    1660:	e24b00a8 	sub	r0, fp, #168	@ 0xa8
+    1664:	e51b3088 	ldr	r3, [fp, #-136]	@ 0xffffff78
+    1668:	e54b20a0 	strb	r2, [fp, #-160]	@ 0xffffff60
+    166c:	e50b30a4 	str	r3, [fp, #-164]	@ 0xffffff5c
+    1670:	ebfffffe 	bl	0 <g_dx_content_path_addr>
+    1674:	e1500004 	cmp	r0, r4
+    1678:	1affffaa 	bne	1528 <tee_task_entry+0x140>
+    167c:	e51b00cc 	ldr	r0, [fp, #-204]	@ 0xffffff34
+    1680:	e51b10d0 	ldr	r1, [fp, #-208]	@ 0xffffff30
+    1684:	e51b20d4 	ldr	r2, [fp, #-212]	@ 0xffffff2c
+    1688:	ebfffffe 	bl	0 <uart_printf_func>
+    168c:	e2444801 	sub	r4, r4, #65536	@ 0x10000
+    1690:	eaffffa4 	b	1528 <tee_task_entry+0x140>
+    1694:	ebfffffe 	bl	122c <TA_DestroyEntryPoint>
+    1698:	ebfffffe 	bl	0 <tee_exit>
+    169c:	eaffffb1 	b	1568 <tee_task_entry+0x180>
+    16a0:	e51b00d8 	ldr	r0, [fp, #-216]	@ 0xffffff28
+    16a4:	ebfffffe 	bl	0 <init_non_std_property>
+    16a8:	e51b00d8 	ldr	r0, [fp, #-216]	@ 0xffffff28
+    16ac:	ebfffffe 	bl	0 <TEE_Free>
+    16b0:	eaffffcc 	b	15e8 <tee_task_entry+0x200>
+    16b4:	ebfffffe 	bl	0 <cinit00>
+    16b8:	e59f3148 	ldr	r3, [pc, #328]	@ 1808 <tee_task_entry+0x420>
+    16bc:	e59f1148 	ldr	r1, [pc, #328]	@ 180c <tee_task_entry+0x424>
+    16c0:	e7950003 	ldr	r0, [r5, r3]
+    16c4:	e59f3144 	ldr	r3, [pc, #324]	@ 1810 <tee_task_entry+0x428>
+    16c8:	e590c000 	ldr	ip, [r0]
+    16cc:	e1a02000 	mov	r2, r0
+    16d0:	e15c0001 	cmp	ip, r1
+    16d4:	e7953003 	ldr	r3, [r5, r3]
+    16d8:	0a000032 	beq	17a8 <tee_task_entry+0x3c0>
+    16dc:	e1520003 	cmp	r2, r3
+    16e0:	2a000035 	bcs	17bc <tee_task_entry+0x3d4>
+    16e4:	e0622003 	rsb	r2, r2, r3
+    16e8:	e3a01000 	mov	r1, #0
+    16ec:	ebfffffe 	bl	0 <memset>
+    16f0:	e59f111c 	ldr	r1, [pc, #284]	@ 1814 <tee_task_entry+0x42c>
+    16f4:	e24b20ac 	sub	r2, fp, #172	@ 0xac
+    16f8:	e08f1001 	add	r1, pc, r1
+    16fc:	e3a00000 	mov	r0, #0
+    1700:	ebfffffe 	bl	0 <__SRE_HuntByName>
+    1704:	e24b80b0 	sub	r8, fp, #176	@ 0xb0
+    1708:	e51b00ac 	ldr	r0, [fp, #-172]	@ 0xffffff54
+    170c:	ebfffffe 	bl	0 <set_global_handle>
+    1710:	e24b909c 	sub	r9, fp, #156	@ 0x9c
+    1714:	e1a01008 	mov	r1, r8
+    1718:	e24b206c 	sub	r2, fp, #108	@ 0x6c
+    171c:	e3a03040 	mov	r3, #64	@ 0x40
+    1720:	e3e00000 	mvn	r0, #0
+    1724:	ebfffffe 	bl	0 <__SRE_MsgRcv>
+    1728:	e3a0c000 	mov	ip, #0
+    172c:	e1a02009 	mov	r2, r9
+    1730:	e51b00b0 	ldr	r0, [fp, #-176]	@ 0xffffff50
+    1734:	e51b10ac 	ldr	r1, [fp, #-172]	@ 0xffffff54
+    1738:	e3a03010 	mov	r3, #16
+    173c:	e50bc09c 	str	ip, [fp, #-156]	@ 0xffffff64
+    1740:	ebfffffe 	bl	0 <__SRE_MsgSnd>
+    1744:	e51b0044 	ldr	r0, [fp, #-68]	@ 0xffffffbc
+    1748:	e3500000 	cmp	r0, #0
+    174c:	050b00d8 	streq	r0, [fp, #-216]	@ 0xffffff28
+    1750:	0affff4a 	beq	1480 <tee_task_entry+0x98>
+    1754:	e3a01001 	mov	r1, #1
+    1758:	ebfffffe 	bl	0 <TEE_Malloc>
+    175c:	e3500000 	cmp	r0, #0
+    1760:	e50b00d8 	str	r0, [fp, #-216]	@ 0xffffff28
+    1764:	059fc0ac 	ldreq	ip, [pc, #172]	@ 1818 <tee_task_entry+0x430>
+    1768:	01a01008 	moveq	r1, r8
+    176c:	024b202c 	subeq	r2, fp, #44	@ 0x2c
+    1770:	03a03001 	moveq	r3, #1
+    1774:	11a01008 	movne	r1, r8
+    1778:	151b20d8 	ldrne	r2, [fp, #-216]	@ 0xffffff28
+    177c:	151b3044 	ldrne	r3, [fp, #-68]	@ 0xffffffbc
+    1780:	03e00000 	mvneq	r0, #0
+    1784:	13e00000 	mvnne	r0, #0
+    1788:	050bc09c 	streq	ip, [fp, #-156]	@ 0xffffff64
+    178c:	ebfffffe 	bl	0 <__SRE_MsgRcv>
+    1790:	e51b00b0 	ldr	r0, [fp, #-176]	@ 0xffffff50
+    1794:	e51b10ac 	ldr	r1, [fp, #-172]	@ 0xffffff54
+    1798:	e1a02009 	mov	r2, r9
+    179c:	e3a03010 	mov	r3, #16
+    17a0:	ebfffffe 	bl	0 <__SRE_MsgSnd>
+    17a4:	eaffff35 	b	1480 <tee_task_entry+0x98>
+    17a8:	e59f106c 	ldr	r1, [pc, #108]	@ 181c <tee_task_entry+0x434>
+    17ac:	e593c000 	ldr	ip, [r3]
+    17b0:	e15c0001 	cmp	ip, r1
+    17b4:	1affffc8 	bne	16dc <tee_task_entry+0x2f4>
+    17b8:	eaffffcc 	b	16f0 <tee_task_entry+0x308>
+    17bc:	e58d2000 	str	r2, [sp]
+    17c0:	e59f0058 	ldr	r0, [pc, #88]	@ 1820 <tee_task_entry+0x438>
+    17c4:	e59f1058 	ldr	r1, [pc, #88]	@ 1824 <tee_task_entry+0x43c>
+    17c8:	e59f2058 	ldr	r2, [pc, #88]	@ 1828 <tee_task_entry+0x440>
+    17cc:	e08f0000 	add	r0, pc, r0
+    17d0:	e08f1001 	add	r1, pc, r1
+    17d4:	e08f2002 	add	r2, pc, r2
+    17d8:	ebfffffe 	bl	0 <uart_printf_func>
+    17dc:	eaffffc3 	b	16f0 <tee_task_entry+0x308>
+    17e0:	000003d8 	ldrdeq	r0, [r0], -r8
+    17e4:	00000000 	andeq	r0, r0, r0
+    17e8:	00000380 	andeq	r0, r0, r0, lsl #7
+    17ec:	0000035c 	andeq	r0, r0, ip, asr r3
+    17f0:	0000045c 	andeq	r0, r0, ip, asr r4
+    17f4:	0000045c 	andeq	r0, r0, ip, asr r4
+    17f8:	0000034c 	andeq	r0, r0, ip, asr #6
+    17fc:	000001c0 	andeq	r0, r0, r0, asr #3
+    1800:	000001c0 	andeq	r0, r0, r0, asr #3
+    1804:	ffff0000 			@ <UNDEFINED> instruction: 0xffff0000
+    1808:	00000000 	andeq	r0, r0, r0
+    180c:	12345678 	eorsne	r5, r4, #120, 12	@ 0x7800000
+    1810:	00000000 	andeq	r0, r0, r0
+    1814:	00000114 	andeq	r0, r0, r4, lsl r1
+    1818:	ffff000c 			@ <UNDEFINED> instruction: 0xffff000c
+    181c:	87654321 	strbhi	r4, [r5, -r1, lsr #6]!
+    1820:	0000004c 	andeq	r0, r0, ip, asr #32
+    1824:	0000004c 	andeq	r0, r0, ip, asr #32
+    1828:	0000015c 	andeq	r0, r0, ip, asr r1
+
+Disassembly of section .rodata:
+
+00002000 <__FUNCTION__.6116>:
+    2000:	72616573 	rsbvc	r6, r1, #482344960	@ 0x1cc00000
+    2004:	6f5f6863 	svcvs	0x005f6863
+    2008:	63656a62 	cmnvs	r5, #401408	@ 0x62000
+    200c:	00000074 	andeq	r0, r0, r4, ror r0
+
+00002010 <__FUNCTION__.6299>:
+    2010:	63656863 	cmnvs	r5, #6488064	@ 0x630000
+    2014:	696c436b 	stmdbvs	ip!, {r0, r1, r3, r5, r6, r8, r9, lr}^
+    2018:	53746e65 	cmnpl	r4, #1616	@ 0x650
+    201c:	616e6769 	cmnvs	lr, r9, ror #14
+    2020:	65727574 	ldrbvs	r7, [r2, #-1396]!	@ 0xfffffa8c
+    2024:	00000000 	andeq	r0, r0, r0
+
+00002028 <__FUNCTION__.6310>:
+    2028:	4f5f4154 	svcmi	0x005f4154
+    202c:	536e6570 	cmnpl	lr, #112, 10	@ 0x1c000000
+    2030:	69737365 	ldmdbvs	r3!, {r0, r2, r5, r6, r8, r9, ip, sp, lr}^
+    2034:	6e456e6f 	cdpvs	14, 4, cr6, cr5, cr15, {3}
+    2038:	50797274 	rsbspl	r7, r9, r4, ror r2
+    203c:	746e696f 	strbtvc	r6, [lr], #-2415	@ 0xfffff691
+    2040:	00000000 	andeq	r0, r0, r0
+
+00002044 <__FUNCTION__.6166>:
+    2044:	72636e65 	rsbvc	r6, r3, #1616	@ 0x650
+    2048:	5f747079 	svcpl	0x00747079
+    204c:	656c6966 	strbvs	r6, [ip, #-2406]!	@ 0xfffff69a
+    2050:	6d616e5f 	stclvs	14, cr6, [r1, #-380]!	@ 0xfffffe84
+    2054:	00000065 	andeq	r0, r0, r5, rrx
+
+00002058 <__FUNCTION__.6187>:
+    2058:	726f7473 	rsbvc	r7, pc, #1929379840	@ 0x73000000
+    205c:	5f656761 	svcpl	0x00656761
+    2060:	6b736174 	blvs	1cda638 <TA_BSS_END+0x1cd7624>
+    2064:	706f665f 	rsbvc	r6, pc, pc, asr r6	@ <UNPREDICTABLE>
+    2068:	00006e65 	andeq	r6, r0, r5, ror #28
+
+0000206c <__FUNCTION__.6097>:
+    206c:	65736e69 	ldrbvs	r6, [r3, #-3689]!	@ 0xfffff197
+    2070:	6f5f7472 	svcvs	0x005f7472
+    2074:	63656a62 	cmnvs	r5, #401408	@ 0x62000
+    2078:	00000074 	andeq	r0, r0, r4, ror r0
+
+0000207c <__FUNCTION__.6196>:
+    207c:	726f7473 	rsbvc	r7, pc, #1929379840	@ 0x73000000
+    2080:	5f656761 	svcpl	0x00656761
+    2084:	6b736174 	blvs	1cda65c <TA_BSS_END+0x1cd7648>
+    2088:	6c63665f 	stclvs	6, cr6, [r3], #-380	@ 0xfffffe84
+    208c:	0065736f 	rsbeq	r7, r5, pc, ror #6
+
+00002090 <__FUNCTION__.6211>:
+    2090:	726f7473 	rsbvc	r7, pc, #1929379840	@ 0x73000000
+    2094:	5f656761 	svcpl	0x00656761
+    2098:	6b736174 	blvs	1cda670 <TA_BSS_END+0x1cd765c>
+    209c:	6572665f 	ldrbvs	r6, [r2, #-1631]!	@ 0xfffff9a1
+    20a0:	00006461 	andeq	r6, r0, r1, ror #8
+
+000020a4 <__FUNCTION__.6224>:
+    20a4:	726f7473 	rsbvc	r7, pc, #1929379840	@ 0x73000000
+    20a8:	5f656761 	svcpl	0x00656761
+    20ac:	6b736174 	blvs	1cda684 <TA_BSS_END+0x1cd7670>
+    20b0:	7277665f 	rsbsvc	r6, r7, #99614720	@ 0x5f00000
+    20b4:	00657469 	rsbeq	r7, r5, r9, ror #8
+
+000020b8 <__FUNCTION__.6239>:
+    20b8:	726f7473 	rsbvc	r7, pc, #1929379840	@ 0x73000000
+    20bc:	5f656761 	svcpl	0x00656761
+    20c0:	6b736174 	blvs	1cda698 <TA_BSS_END+0x1cd7684>
+    20c4:	6573665f 	ldrbvs	r6, [r3, #-1631]!	@ 0xfffff9a1
+    20c8:	00006b65 	andeq	r6, r0, r5, ror #22
+
+000020cc <__FUNCTION__.6261>:
+    20cc:	726f7473 	rsbvc	r7, pc, #1929379840	@ 0x73000000
+    20d0:	5f656761 	svcpl	0x00656761
+    20d4:	6b736174 	blvs	1cda6ac <TA_BSS_END+0x1cd7698>
+    20d8:	6c63665f 	stclvs	6, cr6, [r3], #-380	@ 0xfffffe84
+    20dc:	5f65736f 	svcpl	0x0065736f
+    20e0:	656c6564 	strbvs	r6, [ip, #-1380]!	@ 0xfffffa9c
+    20e4:	00006574 	andeq	r6, r0, r4, ror r5
+
+000020e8 <__FUNCTION__.6253>:
+    20e8:	726f7473 	rsbvc	r7, pc, #1929379840	@ 0x73000000
+    20ec:	5f656761 	svcpl	0x00656761
+    20f0:	6b736174 	blvs	1cda6c8 <TA_BSS_END+0x1cd76b4>
+    20f4:	6e69665f 	mcrvs	6, 3, r6, cr9, cr15, {2}
+    20f8:	00006f66 	andeq	r6, r0, r6, ror #30
+
+000020fc <__FUNCTION__.6269>:
+    20fc:	726f7473 	rsbvc	r7, pc, #1929379840	@ 0x73000000
+    2100:	5f656761 	svcpl	0x00656761
+    2104:	6b736174 	blvs	1cda6dc <TA_BSS_END+0x1cd76c8>
+    2108:	7973665f 	ldmdbvc	r3!, {r0, r1, r2, r3, r4, r6, r9, sl, sp, lr}^
+    210c:	0000636e 	andeq	r6, r0, lr, ror #6
+
+00002110 <__FUNCTION__.6029>:
+    2110:	61656c63 	cmnvs	r5, r3, ror #24
+    2114:	61745f72 	cmnvs	r4, r2, ror pc
+    2118:	7373625f 	cmnvc	r3, #-268435451	@ 0xf0000005
+    211c:	00000000 	andeq	r0, r0, r0
+
+00002120 <__FUNCTION__.6072>:
+    2120:	5f656574 	svcpl	0x00656574
+    2124:	6b736174 	blvs	1cda6fc <TA_BSS_END+0x1cd76e8>
+    2128:	746e655f 	strbtvc	r6, [lr], #-1375	@ 0xfffffaa1
+    212c:	00007972 	andeq	r7, r0, r2, ror r9
+
+00002130 <.LC0>:
+    2130:	25207325 	strcs	r7, [r0, #-805]!	@ 0xfffffcdb
+    2134:	6e203a73 			@ <UNDEFINED> instruction: 0x6e203a73
+    2138:	6620746f 	strtvs	r7, [r0], -pc, ror #8
+    213c:	20646e69 	rsbcs	r6, r4, r9, ror #28
+    2140:	656a626f 	strbvs	r6, [sl, #-623]!	@ 0xfffffd91
+    2144:	200a7463 	andcs	r7, sl, r3, ror #8
+    2148:	00000000 	andeq	r0, r0, r0
+
+0000214c <.LC1>:
+    214c:	7272655b 	rsbsvc	r6, r2, #381681664	@ 0x16c00000
+    2150:	005d726f 	subseq	r7, sp, pc, ror #4
+
+00002154 <.LC2>:
+    2154:	25207325 	strcs	r7, [r0, #-805]!	@ 0xfffffcdb
+    2158:	73203a73 			@ <UNDEFINED> instruction: 0x73203a73
+    215c:	61726f74 	cmnvs	r2, r4, ror pc
+    2160:	745f6567 	ldrbvc	r6, [pc], #-1383	@ 2168 <.LC2+0x14>
+    2164:	3a6b7361 	bcc	1adeef0 <TA_BSS_END+0x1adbedc>
+    2168:	20646142 	rsbcs	r6, r4, r2, asr #2
+    216c:	65707865 	ldrbvs	r7, [r0, #-2149]!	@ 0xfffff79b
+    2170:	64657463 	strbtvs	r7, [r5], #-1123	@ 0xfffffb9d
+    2174:	72617020 	rsbvc	r7, r1, #32
+    2178:	74656d61 	strbtvc	r6, [r5], #-3425	@ 0xfffff29f
+    217c:	74207265 	strtvc	r7, [r0], #-613	@ 0xfffffd9b
+    2180:	73657079 	cmnvc	r5, #121	@ 0x79
+    2184:	00000020 	andeq	r0, r0, r0, lsr #32
+
+00002188 <.LC3>:
+    2188:	25207325 	strcs	r7, [r0, #-805]!	@ 0xfffffcdb
+    218c:	73203a73 			@ <UNDEFINED> instruction: 0x73203a73
+    2190:	61726f74 	cmnvs	r2, r4, ror pc
+    2194:	745f6567 	ldrbvc	r6, [pc], #-1383	@ 219c <.LC3+0x14>
+    2198:	3a6b7361 	bcc	1adef24 <TA_BSS_END+0x1adbf10>
+    219c:	6b636170 	blvs	18da764 <TA_BSS_END+0x18d7750>
+    21a0:	5f656761 	svcpl	0x00656761
+    21a4:	656d616e 	strbvs	r6, [sp, #-366]!	@ 0xfffffe92
+    21a8:	20736920 	rsbscs	r6, r3, r0, lsr #18
+    21ac:	6c6c756e 	stclvs	5, cr7, [ip], #-440	@ 0xfffffe48
+    21b0:	0000200a 	andeq	r2, r0, sl
+
+000021b4 <.LC4>:
+    21b4:	7379732f 	cmnvc	r9, #-1140850688	@ 0xbc000000
+    21b8:	2f6d6574 	svccs	0x006d6574
+    21bc:	2f6e6962 	svccs	0x006e6962
+    21c0:	5f656574 	svcpl	0x00656574
+    21c4:	74736574 	ldrbtvc	r6, [r3], #-1396	@ 0xfffffa8c
+    21c8:	6f74735f 	svcvs	0x0074735f
+    21cc:	00006572 	andeq	r6, r0, r2, ror r5
+
+000021d0 <.LC5>:
+    21d0:	25207325 	strcs	r7, [r0, #-805]!	@ 0xfffffcdb
+    21d4:	63203a73 			@ <UNDEFINED> instruction: 0x63203a73
+    21d8:	6b636568 	blvs	18db780 <TA_BSS_END+0x18d876c>
+    21dc:	67697320 	strbvs	r7, [r9, -r0, lsr #6]!
+    21e0:	7574616e 	ldrbvc	r6, [r4, #-366]!	@ 0xfffffe92
+    21e4:	6d206572 	stcvs	5, cr6, [r0, #-456]!	@ 0xfffffe38
+    21e8:	6c75646f 	ldclvs	4, cr6, [r5], #-444	@ 0xfffffe44
+    21ec:	73207375 			@ <UNDEFINED> instruction: 0x73207375
+    21f0:	20657a69 	rsbcs	r7, r5, r9, ror #20
+    21f4:	4c494146 	mcrrmi	1, 4, r4, r9, cr6
+    21f8:	0000200a 	andeq	r2, r0, sl
+
+000021fc <.LC6>:
+    21fc:	25207325 	strcs	r7, [r0, #-805]!	@ 0xfffffcdb
+    2200:	63203a73 			@ <UNDEFINED> instruction: 0x63203a73
+    2204:	6b636568 	blvs	18db7ac <TA_BSS_END+0x18d8798>
+    2208:	67697320 	strbvs	r7, [r9, -r0, lsr #6]!
+    220c:	7574616e 	ldrbvc	r6, [r4, #-366]!	@ 0xfffffe92
+    2210:	70206572 	eorvc	r6, r0, r2, ror r5
+    2214:	696c6275 	stmdbvs	ip!, {r0, r2, r4, r5, r6, r9, sp, lr}^
+    2218:	78652063 	stmdavc	r5!, {r0, r1, r5, r6, sp}^
+    221c:	656e6f70 	strbvs	r6, [lr, #-3952]!	@ 0xfffff090
+    2220:	7320746e 			@ <UNDEFINED> instruction: 0x7320746e
+    2224:	20657a69 	rsbcs	r7, r5, r9, ror #20
+    2228:	4c494146 	mcrrmi	1, 4, r4, r9, cr6
+    222c:	00000a0a 	andeq	r0, r0, sl, lsl #20
+
+00002230 <.LC7>:
+    2230:	7272455b 	rsbsvc	r4, r2, #381681664	@ 0x16c00000
+    2234:	005d726f 	subseq	r7, sp, pc, ror #4
+
+00002238 <.LC8>:
+    2238:	2e6d6f63 	cdpcs	15, 6, cr6, cr13, cr3, {3}
+    223c:	77617568 	strbvc	r7, [r1, -r8, ror #10]!
+    2240:	682e6965 	stmdavs	lr!, {r0, r2, r5, r6, r8, fp, sp, lr}
+    2244:	73696469 	cmnvc	r9, #1761607680	@ 0x69000000
+    2248:	0000006b 	andeq	r0, r0, fp, rrx
+
+0000224c <.LC9>:
+    224c:	25207325 	strcs	r7, [r0, #-805]!	@ 0xfffffcdb
+    2250:	63203a73 			@ <UNDEFINED> instruction: 0x63203a73
+    2254:	6b636568 	blvs	18db7fc <TA_BSS_END+0x18d87e8>
+    2258:	65696c43 	strbvs	r6, [r9, #-3139]!	@ 0xfffff3bd
+    225c:	6953746e 	ldmdbvs	r3, {r1, r2, r3, r5, r6, sl, ip, sp, lr}^
+    2260:	74616e67 	strbtvc	r6, [r1], #-3687	@ 0xfffff199
+    2264:	20657275 	rsbcs	r7, r5, r5, ror r2
+    2268:	6c696166 	stclvs	1, cr6, [r9], #-408	@ 0xfffffe68
+    226c:	200a6465 	andcs	r6, sl, r5, ror #8
+    2270:	00000000 	andeq	r0, r0, r0
+
+00002274 <.LC10>:
+    2274:	43323045 	teqmi	r2, #69	@ 0x45
+    2278:	39424135 	stmdbcc	r2, {r0, r2, r4, r5, r8, lr}^
+    227c:	42324137 	eorsmi	r4, r2, #-1073741811	@ 0xc000000d
+    2280:	41384133 	teqmi	r8, r3, lsr r1
+    2284:	36393935 			@ <UNDEFINED> instruction: 0x36393935
+    2288:	43333232 	teqmi	r3, #536870915	@ 0x20000003
+    228c:	36304544 	ldrtcc	r4, [r0], -r4, asr #10
+    2290:	42323842 	eorsmi	r3, r2, #4325376	@ 0x420000
+    2294:	46344432 			@ <UNDEFINED> instruction: 0x46344432
+    2298:	31423546 	cmpcc	r2, r6, asr #10
+    229c:	46414335 			@ <UNDEFINED> instruction: 0x46414335
+    22a0:	38423536 	stmdacc	r2, {r1, r2, r4, r5, r8, sl, ip, sp}^
+    22a4:	35443036 	strbcc	r3, [r4, #-54]	@ 0xffffffca
+    22a8:	33413743 	cmpcc	r1, #17563648	@ 0x10c0000
+    22ac:	39383644 	ldmdbcc	r8!, {r2, r6, r9, sl, ip, sp}
+    22b0:	42413539 	submi	r3, r1, #239075328	@ 0xe400000
+    22b4:	32363830 	eorscc	r3, r6, #48, 16	@ 0x300000
+    22b8:	37424230 			@ <UNDEFINED> instruction: 0x37424230
+    22bc:	32324135 	eorscc	r4, r2, #1073741837	@ 0x4000000d
+    22c0:	36374546 	ldrtcc	r4, [r7], -r6, asr #10
+    22c4:	38413337 	stmdacc	r1, {r0, r1, r2, r4, r5, r8, r9, ip, sp}^
+    22c8:	42413141 	submi	r3, r1, #1073741840	@ 0x40000010
+    22cc:	45333041 	ldrmi	r3, [r3, #-65]!	@ 0xffffffbf
+    22d0:	36423731 			@ <UNDEFINED> instruction: 0x36423731
+    22d4:	31443135 	cmpcc	r4, r5, lsr r1
+    22d8:	44344346 	ldrtmi	r4, [r4], #-838	@ 0xfffffcba
+    22dc:	44424335 	strbmi	r4, [r2], #-821	@ 0xfffffccb
+    22e0:	39454142 	stmdbcc	r5, {r1, r6, r8, lr}^
+    22e4:	45333745 	ldrmi	r3, [r3, #-1861]!	@ 0xfffff8bb
+    22e8:	46414545 	strbmi	r4, [r1], -r5, asr #10
+    22ec:	44314135 	ldrtmi	r4, [r1], #-309	@ 0xfffffecb
+    22f0:	46324434 			@ <UNDEFINED> instruction: 0x46324434
+    22f4:	45333742 	ldrmi	r3, [r3, #-1858]!	@ 0xfffff8be
+    22f8:	30303037 	eorscc	r3, r0, r7, lsr r0
+    22fc:	45313332 	ldrmi	r3, [r1, #-818]!	@ 0xfffffcce
+    2300:	32424430 	subcc	r4, r2, #48, 8	@ 0x30000000
+    2304:	44363631 	ldrtmi	r3, [r6], #-1585	@ 0xfffff9cf
+    2308:	35434630 	strbcc	r4, [r3, #-1584]	@ 0xfffff9d0
+    230c:	37394444 	ldrcc	r4, [r9, -r4, asr #8]!
+    2310:	35303745 	ldrcc	r3, [r0, #-1861]!	@ 0xfffff8bb
+    2314:	36364446 	ldrtcc	r4, [r6], -r6, asr #8
+    2318:	43363435 	teqmi	r6, #889192448	@ 0x35000000
+    231c:	33414439 	cmpcc	r1, #956301312	@ 0x39000000
+    2320:	34444538 	strbcc	r4, [r4], #-1336	@ 0xfffffac8
+    2324:	32414645 	subcc	r4, r1, #72351744	@ 0x4500000
+    2328:	44434343 	strbmi	r4, [r3], #-835	@ 0xfffffcbd
+    232c:	38333244 	ldmdacc	r3!, {r2, r6, r9, ip, sp}
+    2330:	32334441 	eorscc	r4, r3, #1090519040	@ 0x41000000
+    2334:	38393345 	ldmdacc	r9!, {r0, r2, r6, r8, r9, ip, sp}
+    2338:	34323132 	ldrtcc	r3, [r2], #-306	@ 0xfffffece
+    233c:	31304232 	teqcc	r0, r2, lsr r2
+    2340:	46443539 			@ <UNDEFINED> instruction: 0x46443539
+    2344:	39443130 	stmdbcc	r4, {r4, r5, r8, ip, sp}^
+    2348:	32373942 	eorscc	r3, r7, #1081344	@ 0x108000
+    234c:	42443234 	submi	r3, r4, #52, 4	@ 0x40000003
+    2350:	39303246 	ldmdbcc	r0!, {r1, r2, r6, r9, ip, sp}
+    2354:	38414445 	stmdacc	r1, {r0, r2, r6, sl, lr}^
+    2358:	36343445 	ldrtcc	r3, [r4], -r5, asr #8
+    235c:	33343045 	teqcc	r4, #69	@ 0x45
+    2360:	42343432 	eorsmi	r3, r4, #838860800	@ 0x32000000
+    2364:	36453438 			@ <UNDEFINED> instruction: 0x36453438
+    2368:	41434642 	cmpmi	r3, r2, asr #12
+    236c:	37443937 			@ <UNDEFINED> instruction: 0x37443937
+    2370:	43334242 	teqmi	r3, #536870916	@ 0x20000004
+    2374:	34323931 	ldrtcc	r3, [r2], #-2353	@ 0xfffff6cf
+    2378:	32444443 	subcc	r4, r4, #1124073472	@ 0x43000000
+    237c:	44453834 	strbmi	r3, [r5], #-2100	@ 0xfffff7cc
+    2380:	30364442 	eorscc	r4, r6, r2, asr #8
+    2384:	46464530 			@ <UNDEFINED> instruction: 0x46464530
+    2388:	33374638 	teqcc	r7, #56, 12	@ 0x3800000
+    238c:	41313030 	teqmi	r1, r0, lsr r0
+    2390:	34413938 	strbcc	r3, [r1], #-2360	@ 0xfffff6c8
+    2394:	33363643 	teqcc	r6, #70254592	@ 0x4300000
+    2398:	39384244 	ldmdbcc	r8!, {r2, r6, r9, lr}
+    239c:	33453037 	cmpcc	r5, #55	@ 0x37
+    23a0:	42383832 	eorsmi	r3, r8, #3276800	@ 0x320000
+    23a4:	31333439 	teqcc	r3, r9, lsr r4
+    23a8:	43343235 	teqmi	r4, #1342177283	@ 0x50000003
+    23ac:	45313633 	ldrmi	r3, [r1, #-1587]!	@ 0xfffff9cd
+    23b0:	42333538 	eorsmi	r3, r3, #56, 10	@ 0xe000000
+    23b4:	32414638 	subcc	r4, r1, #56, 12	@ 0x3800000
+    23b8:	34304539 	ldrtcc	r4, [r0], #-1337	@ 0xfffffac7
+    23bc:	45313645 	ldrmi	r3, [r1, #-1605]!	@ 0xfffff9bb
+    23c0:	46364542 	ldrtmi	r4, [r6], -r2, asr #10
+    23c4:	44424442 	strbmi	r4, [r2], #-1090	@ 0xfffffbbe
+    23c8:	44433738 	strbmi	r3, [r3], #-1848	@ 0xfffff8c8
+    23cc:	45334442 	ldrmi	r4, [r3, #-1090]!	@ 0xfffffbbe
+    23d0:	37344245 	ldrcc	r4, [r4, -r5, asr #4]!
+    23d4:	37323042 	ldrcc	r3, [r2, -r2, asr #32]!
+    23d8:	35383542 	ldrcc	r3, [r8, #-1346]!	@ 0xfffffabe
+    23dc:	45444231 	strbmi	r4, [r4, #-561]	@ 0xfffffdcf
+    23e0:	33314141 	teqcc	r1, #1073741840	@ 0x40000010
+    23e4:	46333241 	ldrtmi	r3, [r3], -r1, asr #4
+    23e8:	36393334 			@ <UNDEFINED> instruction: 0x36393334
+    23ec:	33304137 	teqcc	r0, #-1073741811	@ 0xc000000d
+    23f0:	34374530 	ldrtcc	r4, [r7], #-1328	@ 0xfffffad0
+    23f4:	34414537 	strbcc	r4, [r1], #-1335	@ 0xfffffac9
+    23f8:	35363233 	ldrcc	r3, [r6, #-563]!	@ 0xfffffdcd
+    23fc:	42424332 	submi	r4, r2, #-939524096	@ 0xc8000000
+    2400:	44463433 	strbmi	r3, [r6], #-1075	@ 0xfffffbcd
+    2404:	31364544 	teqcc	r6, r4, asr #10
+    2408:	42393430 	eorsmi	r3, r9, #48, 8	@ 0x30000000
+    240c:	36303546 	ldrtcc	r3, [r0], -r6, asr #10
+    2410:	31384330 	teqcc	r8, r0, lsr r3
+    2414:	30424633 	subcc	r4, r2, r3, lsr r6
+    2418:	46333945 	ldrtmi	r3, [r3], -r5, asr #18
+    241c:	44414236 	strbmi	r4, [r1], #-566	@ 0xfffffdca
+    2420:	36334439 			@ <UNDEFINED> instruction: 0x36334439
+    2424:	34443446 	strbcc	r3, [r4], #-1094	@ 0xfffffbba
+    2428:	31313535 	teqcc	r1, r5, lsr r5
+    242c:	41453539 	cmpmi	r5, r9, lsr r5
+    2430:	34424233 	strbcc	r4, [r2], #-563	@ 0xfffffdcd
+    2434:	32394539 	eorscc	r4, r9, #239075328	@ 0xe400000
+    2438:	41413130 	cmpmi	r1, r0, lsr r1
+    243c:	39464436 	stmdbcc	r6, {r1, r2, r4, r5, sl, lr}^
+    2440:	45413537 	strbmi	r3, [r1, #-1335]	@ 0xfffffac9
+    2444:	45393631 	ldrmi	r3, [r9, #-1585]!	@ 0xfffff9cf
+    2448:	39343132 	ldmdbcc	r4!, {r1, r4, r5, r8, ip, sp}
+    244c:	45443530 	strbmi	r3, [r4, #-1328]	@ 0xfffffad0
+    2450:	39373532 	ldmdbcc	r7!, {r1, r4, r5, r8, sl, ip, sp}
+    2454:	43433744 	cmpmi	r3, #68, 14	@ 0x1100000
+    2458:	45334333 	ldrmi	r4, [r3, #-819]!	@ 0xfffffccd
+    245c:	35344341 	ldrcc	r4, [r4, #-833]!	@ 0xfffffcbf
+    2460:	31423439 	cmpcc	r2, r9, lsr r4
+    2464:	31434134 	cmpcc	r3, r4, lsr r1
+    2468:	45374439 	ldrmi	r4, [r7, #-1081]!	@ 0xfffffbc7
+    246c:	35433933 	strbcc	r3, [r3, #-2355]	@ 0xfffff6cd
+    2470:	37363243 	ldrcc	r3, [r6, -r3, asr #4]!
+    2474:	00000000 	andeq	r0, r0, r0
+
+00002478 <.LC11>:
+    2478:	25207325 	strcs	r7, [r0, #-805]!	@ 0xfffffcdb
+    247c:	6d203a73 	vstmdbvs	r0!, {s6-s120}
+    2480:	6c75646f 	ldclvs	4, cr6, [r5], #-444	@ 0xfffffe44
+    2484:	69207375 	stmdbvs	r0!, {r0, r2, r4, r5, r6, r8, r9, ip, sp, lr}
+    2488:	72652073 	rsbvc	r2, r5, #115	@ 0x73
+    248c:	0a726f72 	beq	1c9e25c <TA_BSS_END+0x1c9b248>
+    2490:	00000020 	andeq	r0, r0, r0, lsr #32
+
+00002494 <.LC12>:
+    2494:	00003330 	andeq	r3, r0, r0, lsr r3
+
+00002498 <.LC13>:
+    2498:	25207325 	strcs	r7, [r0, #-805]!	@ 0xfffffcdb
+    249c:	70203a73 	eorvc	r3, r0, r3, ror sl
+    24a0:	696c6275 	stmdbvs	ip!, {r0, r2, r4, r5, r6, r9, sp, lr}^
+    24a4:	78655f63 	stmdavc	r5!, {r0, r1, r5, r6, r8, r9, sl, fp, ip, lr}^
+    24a8:	656e6f70 	strbvs	r6, [lr, #-3952]!	@ 0xfffff090
+    24ac:	6920746e 	stmdbvs	r0!, {r1, r2, r3, r5, r6, sl, ip, sp, lr}
+    24b0:	72652073 	rsbvc	r2, r5, #115	@ 0x73
+    24b4:	0a726f72 	beq	1c9e284 <TA_BSS_END+0x1c9b270>
+    24b8:	00000020 	andeq	r0, r0, r0, lsr #32
+
+000024bc <.LC14>:
+    24bc:	25207325 	strcs	r7, [r0, #-805]!	@ 0xfffffcdb
+    24c0:	46203a73 			@ <UNDEFINED> instruction: 0x46203a73
+    24c4:	656c6961 	strbvs	r6, [ip, #-2401]!	@ 0xfffff69f
+    24c8:	6f742064 	svcvs	0x00742064
+    24cc:	6c6c6120 	stclvs	1, cr6, [ip], #-128	@ 0xffffff80
+    24d0:	7461636f 	strbtvc	r6, [r1], #-879	@ 0xfffffc91
+    24d4:	656d2065 	strbvs	r2, [sp, #-101]!	@ 0xffffff9b
+    24d8:	6f66206d 	svcvs	0x0066206d
+    24dc:	65732072 	ldrbvs	r2, [r3, #-114]!	@ 0xffffff8e
+    24e0:	6f697373 	svcvs	0x00697373
+    24e4:	64695f6e 	strbtvs	r5, [r9], #-3950	@ 0xfffff092
+    24e8:	69746e65 	ldmdbvs	r4!, {r0, r2, r5, r6, r9, sl, fp, sp, lr}^
+    24ec:	200a7966 	andcs	r7, sl, r6, ror #18
+    24f0:	00000000 	andeq	r0, r0, r0
+
+000024f4 <.LC15>:
+    24f4:	25207325 	strcs	r7, [r0, #-805]!	@ 0xfffffcdb
+    24f8:	69203a73 	stmdbvs	r0!, {r0, r1, r4, r5, r6, r9, fp, ip, sp}
+    24fc:	6c61766e 	stclvs	6, cr7, [r1], #-440	@ 0xfffffe48
+    2500:	66206469 	strtvs	r6, [r0], -r9, ror #8
+    2504:	20656c69 	rsbcs	r6, r5, r9, ror #24
+    2508:	68746170 	ldmdavs	r4!, {r4, r5, r6, r8, sp, lr}^
+    250c:	6874202c 	ldmdavs	r4!, {r2, r3, r5, sp}^
+    2510:	616c2065 	cmnvs	ip, r5, rrx
+    2514:	27207473 			@ <UNDEFINED> instruction: 0x27207473
+    2518:	6920272f 	stmdbvs	r0!, {r0, r1, r2, r3, r5, r8, r9, sl, sp}
+    251c:	616e2073 	cmnvs	lr, r3, ror r0
+    2520:	255b656d 	ldrbcs	r6, [fp, #-1389]	@ 0xfffffa93
+    2524:	200a5d64 	andcs	r5, sl, r4, ror #26
+    2528:	00000000 	andeq	r0, r0, r0
+
+0000252c <.LC16>:
+    252c:	5f636573 	svcpl	0x00636573
+    2530:	726f7473 	rsbvc	r7, pc, #1929379840	@ 0x73000000
+    2534:	5f656761 	svcpl	0x00656761
+    2538:	61746164 	cmnvs	r4, r4, ror #2
+    253c:	0000002f 	andeq	r0, r0, pc, lsr #32
+
+00002540 <.LC17>:
+    2540:	25207325 	strcs	r7, [r0, #-805]!	@ 0xfffffcdb
+    2544:	6e203a73 			@ <UNDEFINED> instruction: 0x6e203a73
+    2548:	20656d61 	rsbcs	r6, r5, r1, ror #26
+    254c:	676e656c 	strbvs	r6, [lr, -ip, ror #10]!
+    2550:	25206874 	strcs	r6, [r0, #-2164]!	@ 0xfffff78c
+    2554:	73692064 	cmnvc	r9, #100	@ 0x64
+    2558:	72616c20 	rsbvc	r6, r1, #32, 24	@ 0x2000
+    255c:	20726567 	rsbscs	r6, r2, r7, ror #10
+    2560:	6e616874 	mcrvs	8, 3, r6, cr1, cr4, {3}
+    2564:	4c494620 	mcrrmi	6, 2, r4, r9, cr0
+    2568:	41505f45 	cmpmi	r0, r5, asr #30
+    256c:	4c5f4854 	mrrcmi	8, 5, r4, pc, cr4	@ <UNPREDICTABLE>
+    2570:	4d5f4e45 	ldclmi	14, cr4, [pc, #-276]	@ 2464 <.LC10+0x1f0>
+    2574:	200a5841 	andcs	r5, sl, r1, asr #16
+    2578:	00000000 	andeq	r0, r0, r0
+
+0000257c <.LC18>:
+    257c:	25207325 	strcs	r7, [r0, #-805]!	@ 0xfffffcdb
+    2580:	6e203a73 			@ <UNDEFINED> instruction: 0x6e203a73
+    2584:	20656d61 	rsbcs	r6, r5, r1, ror #26
+    2588:	676e656c 	strbvs	r6, [lr, -ip, ror #10]!
+    258c:	61286874 			@ <UNDEFINED> instruction: 0x61286874
+    2590:	53206464 			@ <UNDEFINED> instruction: 0x53206464
+    2594:	505f5346 	subspl	r5, pc, r6, asr #6
+    2598:	49545241 	ldmdbmi	r4, {r0, r6, r9, ip, lr}^
+    259c:	4e4f4954 			@ <UNDEFINED> instruction: 0x4e4f4954
+    25a0:	4152545f 	cmpmi	r2, pc, asr r4
+    25a4:	4549534e 	strbmi	r5, [r9, #-846]	@ 0xfffffcb2
+    25a8:	2029544e 	eorcs	r5, r9, lr, asr #8
+    25ac:	69206425 	stmdbvs	r0!, {r0, r2, r5, sl, sp, lr}
+    25b0:	616c2073 	cmnvs	ip, r3, ror r0
+    25b4:	72656772 	rsbvc	r6, r5, #29884416	@ 0x1c80000
+    25b8:	61687420 	cmnvs	r8, r0, lsr #8
+    25bc:	4946206e 	stmdbmi	r6, {r1, r2, r3, r5, r6, sp}^
+    25c0:	505f454c 	subspl	r4, pc, ip, asr #10
+    25c4:	5f485441 	svcpl	0x00485441
+    25c8:	5f4e454c 	svcpl	0x004e454c
+    25cc:	0a58414d 	beq	1612b08 <TA_BSS_END+0x160faf4>
+    25d0:	00000020 	andeq	r0, r0, r0, lsr #32
+
+000025d4 <.LC19>:
+    25d4:	25207325 	strcs	r7, [r0, #-805]!	@ 0xfffffcdb
+    25d8:	61203a73 			@ <UNDEFINED> instruction: 0x61203a73
+    25dc:	636f6c6c 	cmnvs	pc, #108, 24	@ 0x6c00
+    25e0:	65706f20 	ldrbvs	r6, [r0, #-3872]!	@ 0xfffff0e0
+    25e4:	69746172 	ldmdbvs	r4!, {r1, r4, r5, r6, r8, sp, lr}^
+    25e8:	66206e6f 	strtvs	r6, [r0], -pc, ror #28
+    25ec:	656c6961 	strbvs	r6, [ip, #-2401]!	@ 0xfffff69f
+    25f0:	65202c64 	strvs	r2, [r0, #-3172]!	@ 0xfffff39c
+    25f4:	6f6e7272 	svcvs	0x006e7272
+    25f8:	30203d20 	eorcc	r3, r0, r0, lsr #26
+    25fc:	0a782578 	beq	1e0bbe4 <TA_BSS_END+0x1e08bd0>
+    2600:	00000020 	andeq	r0, r0, r0, lsr #32
+
+00002604 <.LC20>:
+    2604:	25207325 	strcs	r7, [r0, #-805]!	@ 0xfffffcdb
+    2608:	64203a73 	strtvs	r3, [r0], #-2675	@ 0xfffff58d
+    260c:	73656769 	cmnvc	r5, #27525120	@ 0x1a40000
+    2610:	70752074 	rsbsvc	r2, r5, r4, ror r0
+    2614:	65746164 	ldrbvs	r6, [r4, #-356]!	@ 0xfffffe9c
+    2618:	69616620 	stmdbvs	r1!, {r5, r9, sl, sp, lr}^
+    261c:	2c64656c 	stclcs	5, cr6, [r4], #-432	@ 0xfffffe50
+    2620:	72726520 	rsbsvc	r6, r2, #32, 10	@ 0x8000000
+    2624:	3d206f6e 	stccc	15, cr6, [r0, #-440]!	@ 0xfffffe48
+    2628:	25783020 	ldrbcs	r3, [r8, #-32]!	@ 0xffffffe0
+    262c:	00200a78 	eoreq	r0, r0, r8, ror sl
+
+00002630 <.LC21>:
+    2630:	25207325 	strcs	r7, [r0, #-805]!	@ 0xfffffcdb
+    2634:	64203a73 	strtvs	r3, [r0], #-2675	@ 0xfffff58d
+    2638:	73656769 	cmnvc	r5, #27525120	@ 0x1a40000
+    263c:	6f642074 	svcvs	0x00642074
+    2640:	616e6966 	cmnvs	lr, r6, ror #18
+    2644:	6166206c 	cmnvs	r6, ip, rrx
+    2648:	64656c69 	strbtvs	r6, [r5], #-3177	@ 0xfffff397
+    264c:	7265202c 	rsbvc	r2, r5, #44	@ 0x2c
+    2650:	206f6e72 	rsbcs	r6, pc, r2, ror lr	@ <UNPREDICTABLE>
+    2654:	7830203d 	ldmdavc	r0!, {r0, r2, r3, r4, r5, sp}
+    2658:	200a7825 	andcs	r7, sl, r5, lsr #16
+    265c:	00000000 	andeq	r0, r0, r0
+
+00002660 <.LC22>:
+    2660:	25207325 	strcs	r7, [r0, #-805]!	@ 0xfffffcdb
+    2664:	65203a73 	strvs	r3, [r0, #-2675]!	@ 0xfffff58d
+    2668:	7972636e 	ldmdbvc	r2!, {r1, r2, r3, r5, r6, r8, r9, sp, lr}^
+    266c:	66207470 			@ <UNDEFINED> instruction: 0x66207470
+    2670:	20656c69 	rsbcs	r6, r5, r9, ror #24
+    2674:	656d616e 	strbvs	r6, [sp, #-366]!	@ 0xfffffe92
+    2678:	69616620 	stmdbvs	r1!, {r5, r9, sl, sp, lr}^
+    267c:	2c64656c 	stclcs	5, cr6, [r4], #-432	@ 0xfffffe50
+    2680:	72726520 	rsbsvc	r6, r2, #32, 10	@ 0x8000000
+    2684:	3d206f6e 	stccc	15, cr6, [r0, #-440]!	@ 0xfffffe48
+    2688:	25783020 	ldrbcs	r3, [r8, #-32]!	@ 0xffffffe0
+    268c:	00200a78 	eoreq	r0, r0, r8, ror sl
+
+00002690 <.LC23>:
+    2690:	25207325 	strcs	r7, [r0, #-805]!	@ 0xfffffcdb
+    2694:	6d203a73 	vstmdbvs	r0!, {s6-s120}
+    2698:	6f6c6c61 	svcvs	0x006c6c61
+    269c:	626f2063 	rsbvs	r2, pc, #99	@ 0x63
+    26a0:	7463656a 	strbtvc	r6, [r3], #-1386	@ 0xfffffa96
+    26a4:	646f6e5f 	strbtvs	r6, [pc], #-3679	@ 26ac <.LC23+0x1c>
+    26a8:	61662065 	cmnvs	r6, r5, rrx
+    26ac:	6465696c 	strbtvs	r6, [r5], #-2412	@ 0xfffff694
+    26b0:	0000200a 	andeq	r2, r0, sl
+
+000026b4 <.LC24>:
+    26b4:	25207325 	strcs	r7, [r0, #-805]!	@ 0xfffffcdb
+    26b8:	6d203a73 	vstmdbvs	r0!, {s6-s120}
+    26bc:	6f6c6c61 	svcvs	0x006c6c61
+    26c0:	65732063 	ldrbvs	r2, [r3, #-99]!	@ 0xffffff9d
+    26c4:	6f697373 	svcvs	0x00697373
+    26c8:	6f6e5f6e 	svcvs	0x006e5f6e
+    26cc:	66206564 	strtvs	r6, [r0], -r4, ror #10
+    26d0:	656c6961 	strbvs	r6, [ip, #-2401]!	@ 0xfffff69f
+    26d4:	00200a64 	eoreq	r0, r0, r4, ror #20
+
+000026d8 <.LC25>:
+    26d8:	25207325 	strcs	r7, [r0, #-805]!	@ 0xfffffcdb
+    26dc:	54203a73 	strtpl	r3, [r0], #-2675	@ 0xfffff58d
+    26e0:	66206568 	strtvs	r6, [r0], -r8, ror #10
+    26e4:	73692064 	cmnvc	r9, #100	@ 0x64
+    26e8:	746f6e20 	strbtvc	r6, [pc], #-3616	@ 26f0 <.LC25+0x18>
+    26ec:	69786520 	ldmdbvs	r8!, {r5, r8, sl, sp, lr}^
+    26f0:	200a7473 	andcs	r7, sl, r3, ror r4
+    26f4:	00000000 	andeq	r0, r0, r0
+
+000026f8 <.LC0>:
+    26f8:	25207325 	strcs	r7, [r0, #-805]!	@ 0xfffffcdb
+    26fc:	66203a73 			@ <UNDEFINED> instruction: 0x66203a73
+    2700:	656c6961 	strbvs	r6, [ip, #-2401]!	@ 0xfffff69f
+    2704:	61743a64 	cmnvs	r4, r4, ror #20
+    2708:	7373625f 	cmnvc	r3, #-268435451	@ 0xf0000005
+    270c:	646e655f 	strbtvs	r6, [lr], #-1375	@ 0xfffffaa1
+    2710:	29642528 	stmdbcs	r4!, {r3, r5, r8, sl, sp}^
+    2714:	5f617420 	svcpl	0x00617420
+    2718:	5f737362 	svcpl	0x00737362
+    271c:	72617473 	rsbvc	r7, r1, #1929379840	@ 0x73000000
+    2720:	64252874 	strtvs	r2, [r5], #-2164	@ 0xfffff78c
+    2724:	00200a29 	eoreq	r0, r0, r9, lsr #20
+
+00002728 <.LC1>:
+    2728:	7272655b 	rsbsvc	r6, r2, #381681664	@ 0x16c00000
+    272c:	005d726f 	subseq	r7, sp, pc, ror #4
+
+00002730 <.LC2>:
+    2730:	25207325 	strcs	r7, [r0, #-805]!	@ 0xfffffcdb
+    2734:	67203a73 			@ <UNDEFINED> instruction: 0x67203a73
+    2738:	5f78645f 	svcpl	0x0078645f
+    273c:	746e6f63 	strbtvc	r6, [lr], #-3939	@ 0xfffff09d
+    2740:	5f746e65 	svcpl	0x00746e65
+    2744:	68746170 	ldmdavs	r4!, {r4, r5, r6, r8, sp, lr}^
+    2748:	6464615f 	strbtvs	r6, [r4], #-351	@ 0xfffffea1
+    274c:	61662072 	cmnvs	r6, r2, ror r0
+    2750:	64656c69 	strbtvs	r6, [r5], #-3177	@ 0xfffff397
+    2754:	0000200a 	andeq	r2, r0, sl
+
+00002758 <.LC3>:
+    2758:	25207325 	strcs	r7, [r0, #-805]!	@ 0xfffffcdb
+    275c:	69203a73 	stmdbvs	r0!, {r0, r1, r4, r5, r6, r9, fp, ip, sp}
+    2760:	6c61766e 	stclvs	6, cr7, [r1], #-440	@ 0xfffffe48
+    2764:	63206469 			@ <UNDEFINED> instruction: 0x63206469
+    2768:	200a646d 	andcs	r6, sl, sp, ror #8
+    276c:	00000000 	andeq	r0, r0, r0
+
+00002770 <.LC4>:
+    2770:	47454554 			@ <UNDEFINED> instruction: 0x47454554
+    2774:	61626f6c 	cmnvs	r2, ip, ror #30
+    2778:	7361546c 	cmnvc	r1, #108, 8	@ 0x6c000000
+    277c:	0000006b 	andeq	r0, r0, fp, rrx
+
+Disassembly of section .data:
+
+00003000 <data_start>:
+    3000:	87654321 	strbhi	r4, [r5, -r1, lsr #6]!
+    3004:	12345678 	eorsne	r5, r4, #120, 12	@ 0x7800000
+
+Disassembly of section .comment:
+
+00000000 <.comment>:
+   0:	43434700 	cmpmi	r3, #0, 14
+   4:	4728203a 			@ <UNDEFINED> instruction: 0x4728203a
+   8:	2029554e 	eorcs	r5, r9, lr, asr #10
+   c:	00382e34 	eorseq	r2, r8, r4, lsr lr
+  10:	43434700 	cmpmi	r3, #0, 14
+  14:	4728203a 			@ <UNDEFINED> instruction: 0x4728203a
+  18:	2029554e 	eorcs	r5, r9, lr, asr #10
+  1c:	00382e34 	eorseq	r2, r8, r4, lsr lr
+
+Disassembly of section .ARM.attributes:
+
+00000000 <.ARM.attributes>:
+   0:	00002a41 	andeq	r2, r0, r1, asr #20
+   4:	61656100 	cmnvs	r5, r0, lsl #2
+   8:	01006962 	tsteq	r0, r2, ror #18
+   c:	00000020 	andeq	r0, r0, r0, lsr #32
+  10:	45543505 	ldrbmi	r3, [r4, #-1285]	@ 0xfffffafb
+  14:	08040600 	stmdaeq	r4, {r9, sl}
+  18:	12010901 	andne	r0, r1, #16384	@ 0x4000
+  1c:	15011404 	strne	r1, [r1, #-1028]	@ 0xfffffbfc
+  20:	18031701 	stmdane	r3, {r0, r8, r9, sl, ip}
+  24:	1a011901 	bne	46430 <TA_BSS_END+0x4341c>
+  28:	Address 0x28 is out of bounds.
+

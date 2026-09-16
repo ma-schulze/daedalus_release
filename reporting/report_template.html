@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Symbolic Execution Report - {{ binary_name }}</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        .header .subtitle {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        
+        .meta-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 30px 40px;
+            background: #f8f9fa;
+            border-bottom: 1px solid #dee2e6;
+        }
+        
+        .meta-item {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .meta-label {
+            font-size: 0.85em;
+            color: #6c757d;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 5px;
+        }
+        
+        .meta-value {
+            font-size: 1.1em;
+            font-weight: 600;
+            color: #495057;
+        }
+        
+        .summary {
+            padding: 30px 40px;
+            background: #fff;
+        }
+        
+        .summary h2 {
+            color: #495057;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+        }
+        
+        .syscalls-section {
+            padding: 30px 40px;
+            background: #fff;
+            border-top: 1px solid #dee2e6;
+        }
+        
+        .syscalls-section h2 {
+            color: #495057;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+        }
+        
+        .syscalls-table {
+            background: #f8f9fa;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .syscalls-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .syscalls-table thead {
+            background: #667eea;
+            color: white;
+        }
+        
+        .syscalls-table th {
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 1em;
+        }
+        
+        .syscalls-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #dee2e6;
+        }
+        
+        .syscalls-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .syscalls-table tbody tr:hover {
+            background: #e9ecef;
+        }
+        
+        .syscall-name {
+            font-family: 'Courier New', monospace;
+            color: #495057;
+            font-size: 0.95em;
+        }
+        
+        .syscall-count {
+            font-weight: 600;
+            color: #667eea;
+            text-align: right;
+            font-size: 1.1em;
+        }
+        
+        /* Function Coverage Styles */
+        .coverage-section {
+            padding: 30px 40px;
+            background: #fff;
+            border-top: 1px solid #dee2e6;
+        }
+        
+        .coverage-section h2 {
+            color: #495057;
+            margin-bottom: 15px;
+            font-size: 1.8em;
+        }
+        
+        .coverage-summary {
+            color: #6c757d;
+            margin-bottom: 20px;
+            font-size: 1.05em;
+            padding: 12px 15px;
+            background: #e7f3ff;
+            border-left: 4px solid #0069d9;
+            border-radius: 4px;
+        }
+        
+        .coverage-table {
+            background: #f8f9fa;
+            border-radius: 8px;
+            overflow: hidden;
+            max-height: 600px;
+            overflow-y: auto;
+        }
+        
+        .coverage-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .coverage-table thead {
+            background: #17a2b8;
+            color: white;
+        }
+        
+        .coverage-table th {
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            background: #17a2b8;
+        }
+        
+        .coverage-table td {
+            padding: 10px 15px;
+            border-bottom: 1px solid #dee2e6;
+        }
+        
+        .coverage-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .coverage-table tbody tr:hover {
+            background: #e9ecef;
+        }
+        
+        .coverage-index {
+            color: #6c757d;
+            text-align: center;
+            font-weight: 500;
+        }
+        
+        .coverage-function {
+            font-family: 'Courier New', monospace;
+            color: #0066cc;
+            font-weight: 500;
+            font-size: 0.95em;
+        }
+        
+        .unknown-function-name {
+            color: #6c757d;
+            font-style: italic;
+        }
+        
+        .coverage-count {
+            color: #28a745;
+            font-weight: 600;
+            text-align: center;
+            font-size: 1.05em;
+        }
+        
+        .coverage-address {
+            font-family: 'Courier New', monospace;
+            color: #6c757d;
+            font-size: 0.85em;
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .stat-card {
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            background: #f8f9fa;
+            border: 2px solid #dee2e6;
+        }
+        
+        .stat-value {
+            font-size: 2em;
+            font-weight: bold;
+            color: #667eea;
+        }
+        
+        .stat-label {
+            font-size: 0.9em;
+            color: #6c757d;
+            margin-top: 5px;
+        }
+        
+        /* Block Coverage Styles */
+        .block-coverage-section {
+            margin-top: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border: 2px solid #dee2e6;
+        }
+        
+        .block-coverage-section h3 {
+            color: #495057;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+        
+        .coverage-bar-container {
+            width: 100%;
+            height: 24px;
+            background: #e9ecef;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+        
+        .coverage-bar {
+            height: 100%;
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            border-radius: 12px;
+            transition: width 0.5s ease;
+            min-width: 2px;
+        }
+        
+        .coverage-stats {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .coverage-percentage {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #28a745;
+        }
+        
+        .coverage-details {
+            font-size: 1em;
+            color: #6c757d;
+        }
+        
+        .bugs-section {
+            padding: 30px 40px;
+        }
+        
+        .bugs-section h2 {
+            color: #495057;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+        }
+        
+        .bug-count {
+            font-size: 1.1em;
+            color: #6c757d;
+            margin-bottom: 20px;
+        }
+        
+        .bug-item {
+            border: 2px solid #dee2e6;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .bug-item:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .bug-header {
+            padding: 20px;
+            background: #fff3cd;
+            border-bottom: 2px solid #ffc107;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .bug-header.critical {
+            background: #f8d7da;
+            border-bottom: 2px solid #dc3545;
+        }
+        
+        .bug-header.info {
+            background: #cfe2ff;
+            border-bottom: 2px solid #0d6efd;
+        }
+        
+        .bug-header.warning {
+            background: #fff3cd;
+            border-bottom: 2px solid #ffc107;
+        }
+        
+        .bug-title {
+            font-size: 1.2em;
+            font-weight: 600;
+            color: #856404;
+        }
+        
+        .bug-title.critical {
+            color: #721c24;
+        }
+        
+        .bug-title.info {
+            color: #084298;
+        }
+        
+        .bug-title.warning {
+            color: #856404;
+        }
+        
+        .criticality-badge {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.75em;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-left: 10px;
+        }
+        
+        .criticality-badge.critical {
+            background: #dc3545;
+            color: white;
+        }
+        
+        .criticality-badge.warning {
+            background: #ffc107;
+            color: #212529;
+        }
+        
+        .criticality-badge.info {
+            background: #0d6efd;
+            color: white;
+        }
+        
+        .bug-address {
+            font-family: 'Courier New', monospace;
+            font-size: 0.95em;
+            color: #6c757d;
+            background: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+        
+        .bug-content {
+            display: none;
+            padding: 20px;
+            background: #fefefe;
+        }
+        
+        .bug-content.active {
+            display: block;
+        }
+        
+        .section-title {
+            font-size: 1.1em;
+            font-weight: 600;
+            color: #495057;
+            margin-bottom: 10px;
+            margin-top: 20px;
+        }
+        
+        .section-title:first-child {
+            margin-top: 0;
+        }
+        
+        .backtrace-list {
+            background: #f0f4ff;
+            border: 1px solid #c5d5ff;
+            border-radius: 4px;
+            padding: 15px;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        
+        .backtrace-item {
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            padding: 5px 0;
+            border-bottom: 1px solid #d6e3ff;
+            color: #495057;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .backtrace-item:last-child {
+            border-bottom: none;
+        }
+        
+        .backtrace-address {
+            color: #0066cc;
+            font-weight: 500;
+        }
+        
+        .backtrace-function {
+            color: #28a745;
+            font-weight: 600;
+            margin-left: 15px;
+            flex-grow: 1;
+            text-align: right;
+        }
+        
+        .backtrace-function.unknown {
+            color: #6c757d;
+            font-style: italic;
+        }
+        
+        .constraints-list {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 4px;
+            padding: 15px;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        
+        .constraint-item {
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            padding: 5px 0;
+            border-bottom: 1px solid #dee2e6;
+            color: #495057;
+        }
+        
+        .constraint-item:last-child {
+            border-bottom: none;
+        }
+        
+        .variables-list {
+            display: grid;
+            gap: 15px;
+        }
+        
+        .variable-card {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 4px;
+            padding: 15px;
+        }
+        
+        .variable-name {
+            font-family: 'Courier New', monospace;
+            font-size: 1.1em;
+            font-weight: 600;
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+        
+        .variable-detail {
+            margin: 5px 0;
+            font-size: 0.95em;
+        }
+        
+        .variable-label {
+            display: inline-block;
+            width: 80px;
+            color: #6c757d;
+            font-weight: 500;
+        }
+        
+        .variable-value {
+            font-family: 'Courier New', monospace;
+            color: #495057;
+        }
+        
+        .no-bugs {
+            text-align: center;
+            padding: 60px 40px;
+            color: #28a745;
+            font-size: 1.3em;
+        }
+        
+        .no-bugs::before {
+            content: "✓";
+            display: block;
+            font-size: 4em;
+            margin-bottom: 20px;
+        }
+        
+        .toggle-icon {
+            transition: transform 0.3s ease;
+        }
+        
+        .toggle-icon.active {
+            transform: rotate(180deg);
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background: #f8f9fa;
+            color: #6c757d;
+            font-size: 0.9em;
+            border-top: 1px solid #dee2e6;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>Symbolic Execution Report</h1>
+            <div class="subtitle">{{ binary_name }}</div>
+        </div>
+        
+        <!-- Meta Information -->
+        <div class="meta-info">
+            <div class="meta-item">
+                <span class="meta-label">Binary Path</span>
+                <span class="meta-value">{{ binary_path }}</span>
+            </div>
+            <div class="meta-item">
+                <span class="meta-label">Execution Time</span>
+                <span class="meta-value">{{ execution_time }}</span>
+            </div>
+            <div class="meta-item">
+                <span class="meta-label">Start Address</span>
+                <span class="meta-value">{{ start_addr }}</span>
+            </div>
+            <div class="meta-item">
+                <span class="meta-label">Target Address</span>
+                <span class="meta-value">{{ target_addr }}</span>
+            </div>
+        </div>
+        
+        <!-- Summary Statistics -->
+        <div class="summary">
+            <h2>Exploration Summary</h2>
+            <div class="stats">
+                <div class="stat-card">
+                    <div class="stat-value">{{ stats.states_explored }}</div>
+                    <div class="stat-label">States Explored</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">{{ stats.targets_found }}</div>
+                    <div class="stat-label">Targets Found</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">{{ stats.bugs_found }}</div>
+                    <div class="stat-label">Bugs Found</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">{{ stats.max_depth }}</div>
+                    <div class="stat-label">Max Depth</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">{{ stats.functions_covered }}</div>
+                    <div class="stat-label">Functions Covered</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">{{ stats.blocks_hit }}</div>
+                    <div class="stat-label">Blocks Covered</div>
+                </div>
+            </div>
+            
+            <!-- Block Coverage -->
+            <div class="block-coverage-section">
+                <h3>Basic Block Coverage</h3>
+                {% if stats.blocks_reachable and stats.blocks_reachable > 0 %}
+                <div class="coverage-bar-container">
+                    <div class="coverage-bar" style="width: {{ stats.block_coverage_pct }}%"></div>
+                </div>
+                <div class="coverage-stats">
+                    <span class="coverage-percentage">{{ stats.block_coverage_pct }}%</span>
+                    <span class="coverage-details">{{ stats.blocks_hit }} / {{ stats.blocks_reachable }} reachable blocks covered</span>
+                </div>
+                {% elif stats.blocks_hit and stats.blocks_hit > 0 %}
+                <div class="coverage-stats">
+                    <span class="coverage-percentage">{{ stats.blocks_hit }}</span>
+                    <span class="coverage-details">unique basic blocks visited (CFG analysis unavailable)</span>
+                </div>
+                {% else %}
+                <div class="coverage-stats">
+                    <span class="coverage-details" style="color: #6c757d;">No block coverage data available</span>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        
+        <!-- Syscall Statistics -->
+        {% if syscall_stats %}
+        <div class="syscalls-section">
+            <h2>Syscall Statistics</h2>
+            <div class="syscalls-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Syscall</th>
+                            <th>Count</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for syscall, count in syscall_stats.items() | sort(attribute='1', reverse=True) %}
+                        <tr>
+                            <td class="syscall-name">{{ syscall }}</td>
+                            <td class="syscall-count">{{ count }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        {% endif %}
+        
+        <!-- Function Coverage -->
+        {% if function_coverage %}
+        <div class="coverage-section">
+            <h2>Function Coverage</h2>
+            <div class="coverage-summary">
+                Explored {{ stats.functions_covered }} unique functions across {{ stats.unique_addresses }} unique addresses
+            </div>
+            <div class="coverage-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 50px;">#</th>
+                            <th>Function Name</th>
+                            <th style="width: 100px;">Hit Count</th>
+                            <th style="width: 120px;">Sample Address</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for func in function_coverage %}
+                        <tr class="{% if func.name == '<unknown>' %}unknown-function{% endif %}">
+                            <td class="coverage-index">{{ loop.index }}</td>
+                            <td class="coverage-function {% if func.name == '<unknown>' %}unknown-function-name{% endif %}">{{ func.name }}</td>
+                            <td class="coverage-count">{{ func.hit_count }}</td>
+                            <td class="coverage-address">{{ func.addresses[0] }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        {% endif %}
+        
+        <!-- Bugs Section -->
+        <div class="bugs-section">
+            <h2>Detected Bugs</h2>
+            
+            {% if bugs %}
+                <div class="bug-count">Found {{ bugs|length }} bug(s)</div>
+                
+                {% for bug in bugs %}
+                <div class="bug-item">
+                    <div class="bug-header {{ bug.criticality|default('warning')|lower }}" onclick="toggleBug('bug-{{ loop.index }}')">
+                        <div>
+                            <div class="bug-title {{ bug.criticality|default('warning')|lower }}">
+                                {{ bug.type }}
+                                <span class="criticality-badge {{ bug.criticality|default('warning')|lower }}">{{ bug.criticality|default('WARNING') }}</span>
+                            </div>
+                            <div class="bug-address">Address: {{ bug.address }}</div>
+                        </div>
+                        <span class="toggle-icon" id="icon-bug-{{ loop.index }}">▼</span>
+                    </div>
+                    
+                    <div class="bug-content" id="bug-{{ loop.index }}">
+                        <!-- Basic Block Backtrace -->
+                        {% if bug.backtrace %}
+                        <div class="section-title">Basic Block Backtrace ({{ bug.backtrace|length }} blocks)</div>
+                        <div class="backtrace-list">
+                            {% for entry in bug.backtrace %}
+                            <div class="backtrace-item">
+                                <span class="backtrace-address">[{{ loop.index }}] {{ entry.address }}</span>
+                                <span class="backtrace-function {% if entry.function == '&lt;unknown&gt;' or entry.function == '<unknown>' %}unknown{% endif %}">{{ entry.function }}</span>
+                            </div>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                        
+                        <!-- Constraints -->
+                        <div class="section-title">Constraints ({{ bug.constraints|length }} total)</div>
+                        <div class="constraints-list">
+                            {% for constraint in bug.constraints %}
+                            <div class="constraint-item">[{{ loop.index }}] {{ constraint }}</div>
+                            {% endfor %}
+                        </div>
+                        
+                        <!-- Symbolic Variables -->
+                        {% if bug.variables %}
+                        <div class="section-title">Symbolic Variables</div>
+                        <div class="variables-list">
+                            {% for var in bug.variables %}
+                            <div class="variable-card">
+                                <div class="variable-name">{{ var.name }}</div>
+                                <div class="variable-detail">
+                                    <span class="variable-label">Size:</span>
+                                    <span class="variable-value">{{ var.size }} bits</span>
+                                </div>
+                                <div class="variable-detail">
+                                    <span class="variable-label">Hex:</span>
+                                    <span class="variable-value">{{ var.hex_value }}</span>
+                                </div>
+                                {% if var.bytes_value %}
+                                <div class="variable-detail">
+                                    <span class="variable-label">Bytes:</span>
+                                    <span class="variable-value">{{ var.bytes_value }}</span>
+                                </div>
+                                {% endif %}
+                                {% if var.ascii_value %}
+                                <div class="variable-detail">
+                                    <span class="variable-label">ASCII:</span>
+                                    <span class="variable-value">'{{ var.ascii_value }}'</span>
+                                </div>
+                                {% endif %}
+                            </div>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                        
+                        <!-- Additional Info -->
+                        <div class="section-title">State Information</div>
+                        <div class="variable-detail">
+                            <span class="variable-label">Satisfiable:</span>
+                            <span class="variable-value">{{ bug.satisfiable }}</span>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+                
+            {% else %}
+                <div class="no-bugs">
+                    No bugs detected during symbolic execution
+                </div>
+            {% endif %}
+        </div>
+
+        <!-- Stub functions called -->
+        <div class="stub-functions-section" style="padding: 30px 40px; border-top: 1px solid #dee2e6;">
+            <h2 style="color: #495057; margin-bottom: 20px;">Stub functions called</h2>
+            <p style="color: #6c757d; margin-bottom: 15px; font-size: 0.95em;">SimProcedures that are hooked but implemented as stubs (placeholders). Execution hit these during exploration.</p>
+            {% if stub_functions %}
+                <ul style="list-style: none; padding: 0;">
+                    {% for entry in stub_functions %}
+                    <li style="padding: 8px 0; border-bottom: 1px solid #eee; font-family: monospace;">
+                        {{ entry.name }}{% if entry.address %} <span style="color: #6c757d;">at {{ entry.address }}</span>{% endif %}
+                    </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p style="color: #6c757d;">No stub functions were called.</p>
+            {% endif %}
+        </div>
+        
+        <!-- Footer -->
+        <div class="footer">
+            Generated by angr-trustzone symbolic execution framework
+        </div>
+    </div>
+    
+    <script>
+        function toggleBug(bugId) {
+            const content = document.getElementById(bugId);
+            const icon = document.getElementById('icon-' + bugId);
+            
+            if (content.classList.contains('active')) {
+                content.classList.remove('active');
+                icon.classList.remove('active');
+            } else {
+                content.classList.add('active');
+                icon.classList.add('active');
+            }
+        }
+    </script>
+</body>
+</html>
+

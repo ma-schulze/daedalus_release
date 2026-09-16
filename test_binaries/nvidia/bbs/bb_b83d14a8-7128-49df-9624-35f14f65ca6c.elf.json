@@ -1,0 +1,454 @@
+{
+    "0x15c": {
+        "function": "0x15c",
+        "nodes": [
+            {
+                "name": "BB_0",
+                "start": "0000015c",
+                "end": "00000163",
+                "calls": [],
+                "svc": [],
+                "edges": []
+            }
+        ]
+    },
+    "0x168": {
+        "function": "0x168",
+        "nodes": [
+            {
+                "name": "BB_0",
+                "start": "00000168",
+                "end": "0000016f",
+                "calls": [],
+                "svc": [],
+                "edges": []
+            }
+        ]
+    },
+    "0x174": {
+        "function": "0x174",
+        "nodes": [
+            {
+                "name": "BB_0",
+                "start": "00000174",
+                "end": "000001df",
+                "calls": [
+                    {
+                        "func": "memset",
+                        "api": true,
+                        "api_type": "libc"
+                    },
+                    {
+                        "func": "invoke_jetson_user_key_pta",
+                        "api": false,
+                        "api_type": null
+                    }
+                ],
+                "svc": [],
+                "edges": [
+                    "BB_11",
+                    "BB_1"
+                ]
+            },
+            {
+                "name": "BB_1",
+                "start": "000001e0",
+                "end": "000001e7",
+                "calls": [],
+                "svc": [],
+                "edges": [
+                    "BB_21",
+                    "BB_2"
+                ]
+            },
+            {
+                "name": "BB_2",
+                "start": "000001e8",
+                "end": "000001ef",
+                "calls": [],
+                "svc": [],
+                "edges": [
+                    "BB_20",
+                    "BB_3"
+                ]
+            },
+            {
+                "name": "BB_3",
+                "start": "000001f0",
+                "end": "000001f7",
+                "calls": [],
+                "svc": [],
+                "edges": [
+                    "BB_13",
+                    "BB_4"
+                ]
+            },
+            {
+                "name": "BB_4",
+                "start": "000001f8",
+                "end": "000001fb",
+                "calls": [],
+                "svc": [],
+                "edges": [
+                    "BB_22",
+                    "BB_5"
+                ]
+            },
+            {
+                "name": "BB_5",
+                "start": "000001fc",
+                "end": "00000263",
+                "calls": [
+                    {
+                        "func": "memcpy",
+                        "api": true,
+                        "api_type": "libc"
+                    }
+                ],
+                "svc": [],
+                "edges": [
+                    "BB_19",
+                    "BB_6"
+                ]
+            },
+            {
+                "name": "BB_6",
+                "start": "00000264",
+                "end": "0000026f",
+                "calls": [],
+                "svc": [],
+                "edges": [
+                    "BB_19",
+                    "BB_7"
+                ]
+            },
+            {
+                "name": "BB_7",
+                "start": "00000270",
+                "end": "0000027b",
+                "calls": [],
+                "svc": [],
+                "edges": [
+                    "BB_19",
+                    "BB_8"
+                ]
+            },
+            {
+                "name": "BB_8",
+                "start": "0000027c",
+                "end": "000002bf",
+                "calls": [
+                    {
+                        "func": "strlen",
+                        "api": true,
+                        "api_type": "libc"
+                    },
+                    {
+                        "func": "invoke_jetson_user_key_pta",
+                        "api": false,
+                        "api_type": null
+                    }
+                ],
+                "svc": [],
+                "edges": [
+                    "BB_11",
+                    "BB_9"
+                ]
+            },
+            {
+                "name": "BB_9",
+                "start": "000002c0",
+                "end": "000002c3",
+                "calls": [],
+                "svc": [],
+                "edges": [
+                    "BB_10"
+                ]
+            },
+            {
+                "name": "BB_10",
+                "start": "000002c4",
+                "end": "00000307",
+                "calls": [
+                    {
+                        "func": "strlen",
+                        "api": true,
+                        "api_type": "libc"
+                    },
+                    {
+                        "func": "invoke_jetson_user_key_pta",
+                        "api": false,
+                        "api_type": null
+                    }
+                ],
+                "svc": [],
+                "edges": [
+                    "BB_11"
+                ]
+            },
+            {
+                "name": "BB_11",
+                "start": "00000308",
+                "end": "00000323",
+                "calls": [],
+                "svc": [],
+                "edges": [
+                    "BB_23",
+                    "BB_12"
+                ]
+            },
+            {
+                "name": "BB_12",
+                "start": "00000324",
+                "end": "00000327",
+                "calls": [
+                    {
+                        "func": "__stack_chk_fail",
+                        "api": true,
+                        "api_type": "libc"
+                    }
+                ],
+                "svc": [],
+                "edges": []
+            },
+            {
+                "name": "BB_13",
+                "start": "00000328",
+                "end": "000003c7",
+                "calls": [
+                    {
+                        "func": "memcpy",
+                        "api": true,
+                        "api_type": "libc"
+                    },
+                    {
+                        "func": "memset",
+                        "api": true,
+                        "api_type": "libc"
+                    },
+                    {
+                        "func": "memcpy",
+                        "api": true,
+                        "api_type": "libc"
+                    }
+                ],
+                "svc": [],
+                "edges": [
+                    "BB_19",
+                    "BB_14"
+                ]
+            },
+            {
+                "name": "BB_14",
+                "start": "000003c8",
+                "end": "000003d3",
+                "calls": [],
+                "svc": [],
+                "edges": [
+                    "BB_19",
+                    "BB_15"
+                ]
+            },
+            {
+                "name": "BB_15",
+                "start": "000003d4",
+                "end": "000003df",
+                "calls": [],
+                "svc": [],
+                "edges": [
+                    "BB_19",
+                    "BB_16"
+                ]
+            },
+            {
+                "name": "BB_16",
+                "start": "000003e0",
+                "end": "0000040b",
+                "calls": [
+                    {
+                        "func": "invoke_jetson_user_key_pta",
+                        "api": false,
+                        "api_type": null
+                    }
+                ],
+                "svc": [],
+                "edges": [
+                    "BB_11",
+                    "BB_17"
+                ]
+            },
+            {
+                "name": "BB_17",
+                "start": "0000040c",
+                "end": "00000453",
+                "calls": [
+                    {
+                        "func": "strlen",
+                        "api": true,
+                        "api_type": "libc"
+                    },
+                    {
+                        "func": "strlen",
+                        "api": true,
+                        "api_type": "libc"
+                    },
+                    {
+                        "func": "invoke_jetson_user_key_pta",
+                        "api": false,
+                        "api_type": null
+                    }
+                ],
+                "svc": [],
+                "edges": [
+                    "BB_11",
+                    "BB_18"
+                ]
+            },
+            {
+                "name": "BB_18",
+                "start": "00000454",
+                "end": "00000467",
+                "calls": [],
+                "svc": [],
+                "edges": [
+                    "BB_10"
+                ]
+            },
+            {
+                "name": "BB_19",
+                "start": "00000468",
+                "end": "0000046f",
+                "calls": [],
+                "svc": [],
+                "edges": [
+                    "BB_11"
+                ]
+            },
+            {
+                "name": "BB_20",
+                "start": "00000470",
+                "end": "00000487",
+                "calls": [
+                    {
+                        "func": "invoke_jetson_user_key_pta",
+                        "api": false,
+                        "api_type": null
+                    }
+                ],
+                "svc": [],
+                "edges": [
+                    "BB_11"
+                ]
+            },
+            {
+                "name": "BB_21",
+                "start": "00000488",
+                "end": "0000048f",
+                "calls": [],
+                "svc": [],
+                "edges": [
+                    "BB_11"
+                ]
+            },
+            {
+                "name": "BB_22",
+                "start": "00000490",
+                "end": "00000497",
+                "calls": [],
+                "svc": [],
+                "edges": [
+                    "BB_11"
+                ]
+            },
+            {
+                "name": "BB_23",
+                "start": "00000498",
+                "end": "000004b7",
+                "calls": [],
+                "svc": [],
+                "edges": []
+            }
+        ]
+    },
+    "0x170": {
+        "function": "0x170",
+        "nodes": [
+            {
+                "name": "BB_0",
+                "start": "00000170",
+                "end": "00000173",
+                "calls": [],
+                "svc": [],
+                "edges": []
+            }
+        ]
+    },
+    "0x164": {
+        "function": "0x164",
+        "nodes": [
+            {
+                "name": "BB_0",
+                "start": "00000164",
+                "end": "00000167",
+                "calls": [],
+                "svc": [],
+                "edges": []
+            }
+        ]
+    },
+    "000000d8": {
+        "function": "000000d8",
+        "nodes": [
+            {
+                "name": "BB_0",
+                "start": "000000d8",
+                "end": "000000ff",
+                "calls": [],
+                "svc": [],
+                "edges": [
+                    "BB_2",
+                    "BB_1"
+                ]
+            },
+            {
+                "name": "BB_1",
+                "start": "00000100",
+                "end": "00000127",
+                "calls": [
+                    {
+                        "func": "TEE_InvokeTACommand",
+                        "api": true,
+                        "api_type": "tee"
+                    }
+                ],
+                "svc": [],
+                "edges": []
+            },
+            {
+                "name": "BB_2",
+                "start": "00000128",
+                "end": "0000014b",
+                "calls": [
+                    {
+                        "func": "TEE_OpenTASession",
+                        "api": true,
+                        "api_type": "gp_api"
+                    }
+                ],
+                "svc": [],
+                "edges": [
+                    "BB_1",
+                    "BB_3"
+                ]
+            },
+            {
+                "name": "BB_3",
+                "start": "0000014c",
+                "end": "0000015b",
+                "calls": [],
+                "svc": [],
+                "edges": []
+            }
+        ]
+    }
+}

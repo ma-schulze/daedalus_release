@@ -1,0 +1,4 @@
+[root] Logging to file: mitee.log
+[__main__] Failed to generate CFG: required argument is not an integer
+[__main__] Trying fast CFG generation...
+[__main__] Failed to generate CFG: 'NoneType' object cannot be interpreted as an integer
