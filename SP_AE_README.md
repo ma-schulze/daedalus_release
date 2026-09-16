@@ -33,20 +33,22 @@ We provide a CloudLab profile that provisions a machine with all OS-level prereq
 already available, so reviewers do not need to configure
 the base system themselves.
 
-<!-- TODO(authors): fill in the concrete CloudLab instantiation details below. -->
-
-> **CloudLab instantiation instructions (to be completed by the authors):**
+> **CloudLab instantiation instructions:**
 >
 > 1. Log in to [CloudLab](https://www.cloudlab.us/).
-> 2. Instantiate the profile: **`<PROFILE NAME / URL — TODO>`**.
-> 3. Recommended hardware type: **`<HARDWARE TYPE — TODO>`** (≥ `<N>` cores,
->    ≥ `<M>` GB RAM recommended for the parallel LLM-enhanced run).
-> 4. Operating system image: **`<IMAGE — TODO>`**.
-> 5. Once the node is ready, SSH in as: `ssh <user>@<node>` **`<— TODO>`**.
-> 6. The repository is located at / should be cloned to: **`<PATH — TODO>`**.
->
-> _(Placeholder — replace with the final CloudLab profile name, URL, hardware, and any
-> profile-specific setup steps.)_
+> 2. Instantiate the profile: **`https://www.cloudlab.us/show-profile.php?uuid=f42aed0a-b1f9-11f1-90d9-e4434b2381fc`**.
+> 3. Once the node is ready, SSH in as: `ssh -L 8081:localhost:8081 user@node -i ~/.ssh/<your_cloudlab_private_key>`.
+    We require port forwarding so that we can inspect the analysis results from the hosts browser.
+    You can find the username and node name to connect in CloudLab under `Experiments->My Experiments` and then by clicking on your experiment name.
+    There should be a table with the entry `SSH command` which you can use (but have to add the port forwarding and your private key, unless its your default one).
+
+Once connected, clone the source-code of Daedalus from the GitHub mirror (same contents as the `zenodo` version):
+
+```bash 
+git clone https://github.com/ma-schulze/daedalus_release.git
+cd daedalus_release
+```
+Otherwise, simply enter the project root via `cd`.
 
 Everything below assumes you are logged into the provisioned CloudLab node and are in the
 repository root (the directory that contains `main.py`).
@@ -90,7 +92,7 @@ minutes to some tens of minutes, depending on the machine). When it finishes you
 All executions completed.
 ```
 
-The report for this run is written under:
+The report for this run is written under (relative to the project root):
 
 ```
 reports/others/test_binaries/optee_examples/optee_examples/f4e750bb-1437-4fbf-8785-8d3580c34994.elf/
@@ -101,26 +103,14 @@ reports/others/test_binaries/optee_examples/optee_examples/f4e750bb-1437-4fbf-87
 Start the report web server (from the repository root):
 
 ```bash
-cd ../..                       # back to the repository root
-source venv/bin/activate       # if not already active
-python3 reporting/serve_reports.py
+cd ../..                                        # back to the repository root
+source venv/bin/activate                        # if not already active
+python3 reporting/serve_reports.py & disown     # leave the server running in the background
 ```
 
-Then open a browser at **`http://localhost:8081`** and navigate to the
+Then open a browser **on your host**, open **`http://localhost:8081`** and navigate to the
 `f4e750bb-...-8d3580c34994.elf` folder. Each report shows the covered basic blocks,
-exploration statistics, any detected bugs, and the emulated syscalls/library functions.
-
-If you are on a headless node (no GUI/browser), you can either:
-
-- forward the port over SSH, e.g. `ssh -L 8081:localhost:8081 <user>@<node>`, and open
-  `http://localhost:8081` on your local machine; **or**
-- inspect the generated files directly on disk:
-
-```bash
-ls reports/others/test_binaries/optee_examples/optee_examples/f4e750bb-1437-4fbf-8785-8d3580c34994.elf/
-# open the report_*.html in any browser, or read the machine-readable report_*.json:
-cat reports/others/test_binaries/optee_examples/optee_examples/f4e750bb-1437-4fbf-8785-8d3580c34994.elf/report_*.json
-```
+exploration statistics, any detected bugs (there should be none for this target), and the emulated syscalls/library functions.
 
 Stop the server with `Ctrl+C` when done (you can also leave it running and reload it
 after step 3d).
@@ -143,8 +133,8 @@ DAEDALUS processes run concurrently and write into the same TA report folder as 
 > **This run does not terminate on its own for 24 hours** (it keeps exploring / re-entering). Let it run
 > for about **1 hour**, then stop it.
 
-**To stop the run after ~1 hour**, open a second terminal on the node (or forward another
-SSH session) and send a graceful termination signal to all analysis processes:
+**To stop the run after ~1 hour**, press `Ctrl+C`. 
+To make sure that all subprocesses terminate, you can also send a graceful termination signal to all analysis processes:
 
 ```bash
 pkill -f main.py
@@ -152,9 +142,7 @@ pkill -f main.py
 
 `SIGTERM` is handled gracefully: each process finalizes and flushes its report before
 exiting. (Reports are also persisted incrementally during the run, so results are not lost
-even on a hard kill.) After `pkill`, you may also need to stop the launcher script itself
-(the terminal running `run_optee_examples.sh`) with `Ctrl+C`, since it sleeps after
-starting the workers.
+even on a hard kill.) 
 
 > **Tip:** confirm the workers have exited with `pgrep -af main.py` (should print
 > nothing, otherwise wait a little bit).
@@ -181,18 +169,15 @@ blocks covered across all runs and the aggregated bug findings and syscall stati
 
 ### Step 3e — Inspect the merged report
 
-Start (or reload) the report server and open the TA folder again:
+If you previously stopped it, restart the report server then navigate the web view using your host browser at `localhost:8081`.
 
 ```bash
 python3 reporting/serve_reports.py
 # browse http://localhost:8081  ->  f4e750bb-...-8d3580c34994.elf
 ```
 
-The merged report (prefixed `merged_report_`) should show **higher basic-block coverage**
-than the individual naive run, illustrating the benefit of the LLM-constrained inputs and
-smart-reentry techniques described in the paper. As with step 3b, on a headless node you
-can instead open the `merged_report_*.html` file directly or read the
-`merged_report_*.json`.
+This report shows the merged results of the different LLM-enabled runs.
+Depending on how long you let it run and how many resources the node you received has, the achieved coverage could be higher or at least equal to the coverage achieved with the naive run.
 
 ## 4. What success looks like
 
