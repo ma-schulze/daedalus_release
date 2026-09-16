@@ -51,6 +51,14 @@ Once connected, clone the source-code of Daedalus from the GitHub mirror (same c
 git clone https://github.com/ma-schulze/daedalus_release.git
 cd daedalus_release
 ```
+
+You can also download the `zenodo` version instead: 
+```
+wget https://zenodo.org/records/22802443/files/daedalus_zenodo.zip?download=1 -O daedalus_release.zip
+unzip daedalus_release.zip
+cd daedalus_release
+```
+
 Otherwise, simply enter the project root via `cd`.
 
 Everything below assumes you are logged into the provisioned CloudLab node and are in the
