@@ -37,9 +37,9 @@ the base system themselves.
 > **CloudLab instantiation instructions:**
 > We provide a CloudLab profile for the evaluation (`urn:publicid:IDN+utah.cloudlab.us+image+trustleech-PG0:IEEE-SP-2027-AE`)
 > 1. Log in to [CloudLab](https://www.cloudlab.us/).
-> 2. Go to the profile page: **`https://www.cloudlab.us/show-profile.php?uuid=f42aed0a-b1f9-11f1-90d9-e4434b2381fc`**.
-> 3. Click `Instanstiate`
-> 4. Select some cluster that is available and click `Next`, then `Finish`. Wait for a bit until the node is ready.
+> 2. Go to the profile page: **`https://www.cloudlab.us/p/Daedalus-AE/IEEE-SP-2027-AE`**.
+> 3. Click `Next`
+> 4. Select your project some cluster that is available and click `Next`, then `Finish`. Wait for a bit until the node is ready.
 > 5. Once the node is ready, SSH in as: `ssh -L 8081:localhost:8081 user@node -i ~/.ssh/<your_cloudlab_private_key>`.
     We require port forwarding so that we can inspect the analysis results from the hosts browser.
     You can find the username and node name to connect in CloudLab under `Experiments->My Experiments` and then by clicking on your experiment name.
