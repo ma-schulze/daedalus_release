@@ -35,7 +35,7 @@ already available, so reviewers do not need to configure
 the base system themselves.
 
 > **CloudLab instantiation instructions:**
-> We provide a CloudLab profile for the evaluation (`urn:publicid:IDN+utah.cloudlab.us+image+trustleech-PG0:IEEE-SP-2027-AE`)
+> We provide a CloudLab profile for the evaluation
 > 1. Log in to [CloudLab](https://www.cloudlab.us/).
 > 2. Go to the profile page: **`https://www.cloudlab.us/p/Daedalus-AE/IEEE-SP-2027-AE`**.
 > 3. Click `Next`
